@@ -1,0 +1,61 @@
+footer {
+  background: #add0ef;
+  padding: 50px 100px 30px;
+}
+
+.footer p{
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.footer span{
+  font-size: 1rem;
+  color: #415b7a;
+}
+
+.footer_info img {
+  width: calc(100% - 80%);
+  margin-bottom: 5px;
+}
+
+.footer_info h5{
+  font-size: 1rem;
+  margin-top: -5px;
+  margin-bottom: 1rem;
+}
+
+.footer_info p{
+  font-size: 0.93rem;
+  width: 200px;
+  text-align: justify;
+}
+
+.opening__hours-item {
+  background: transparent !important;
+}
+
+.social__contacts-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff2626;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social__contacts-item a{
+  color: #1d3253;
+  font-size: 1.1rem;
+}
+
+.social__contacts-item:hover{
+  background: #1d3253;
+}
+
+.social__contacts-item:hover a{
+  color: #ff2626;
+}

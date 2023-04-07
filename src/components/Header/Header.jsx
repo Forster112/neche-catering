@@ -28,7 +28,7 @@ const Header = () => {
     <header>
       <div className="nav d-flex align-items-center justify-content-between">
         <div className="logo d-flex align-items-center gap-4">
-          <Link>
+          <Link to="/home">
             <img src={logo} alt="logo" />
           </Link>
           <h5>neche catering</h5>

@@ -1,0 +1,33 @@
+/* .home__intro{
+  margin-top: 140px;
+} */
+
+.intro__col{
+  flex-direction: column;
+}
+
+.intro__col h1{
+  font-size: 1.5rem;
+}
+
+.intro__col h5{
+  font-size: 3rem;
+}
+
+.intro__col h5 span{
+  color: #ff2626;
+}
+
+.intro__col p{
+  color: #789DC9;
+  line-height: 20px;
+}
+
+.img__col{
+  margin-left: 110px !important;
+}
+
+.img__col img{
+  height: 400px;
+  width: 400px;
+}

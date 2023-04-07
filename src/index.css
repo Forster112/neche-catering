@@ -15,6 +15,11 @@ a {
 body {
   font-family: "Istok Web", sans-serif;
   background: #EAEDF3;
+  overflow-x: hidden;
+}
+
+section{
+  margin: 100px 110px;
 }
 
 h1,
