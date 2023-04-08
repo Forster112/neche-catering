@@ -34,19 +34,6 @@ footer {
   background: transparent !important;
 }
 
-.social__contacts-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ff2626;
-  width: 30px;
-  height: 30px;
-  padding: 2px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
 .social__contacts-item a{
   color: #1d3253;
   font-size: 1.1rem;

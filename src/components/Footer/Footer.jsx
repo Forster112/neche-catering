@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 import "../../styles/footer.css";
 import logo from "../../assets/images/logo.png";
+import { IconWrap } from "../StyledComponents/StyledComponents";
 
 const Footer = () => {
   return (
@@ -63,21 +64,21 @@ const Footer = () => {
               </ListGroupItem>
               <ListGroupItem className="opening__hours-item border-0 ps-0">
                 <div className="social__contacts d-flex align-items-center gap-4">
-                  <div className="social__contacts-item">
+                  <IconWrap className="social__contacts-item">
                     <Link to="facebook.com">
                       <i class="ri-facebook-line"></i>
                     </Link>
-                  </div>
-                  <div className="social__contacts-item">
+                  </IconWrap>
+                  <IconWrap className="social__contacts-item">
                     <Link to="instagram.com">
                       <i class="ri-instagram-line"></i>
                     </Link>
-                  </div>
-                  <div className="social__contacts-item">
+                  </IconWrap>
+                  <IconWrap className="social__contacts-item">
                     <Link to="whatsapp.me">
                       <i class="ri-whatsapp-line"></i>
                     </Link>
-                  </div>
+                  </IconWrap>
                 </div>
               </ListGroupItem>
             </ListGroup>

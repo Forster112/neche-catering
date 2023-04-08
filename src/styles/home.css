@@ -31,3 +31,17 @@
   height: 400px;
   width: 400px;
 }
+
+.vector__images{
+  width: 70px;
+}
+
+.vector__images2{
+  width: 50px;
+}
+
+.wws__section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

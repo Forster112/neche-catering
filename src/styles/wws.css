@@ -1,0 +1,17 @@
+.wws__intro h5{
+  color: #ff2626;
+}
+
+.wws__intro-para{
+  font-size: 2.5rem;
+  font-family: "RocknRoll One", sans-serif !important;
+  color: #33548A;
+}
+
+.wws__intro-para span{
+  color: #ff2626;
+}
+
+.wws__desc{
+  color: #789DC9;
+}
