@@ -15,3 +15,12 @@
 .wws__desc{
   color: #789DC9;
 }
+
+.wws__content{
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wws__content img{
+  width: 100px;
+}
