@@ -7,6 +7,23 @@ import service03 from "../../assets/images/service-03.png";
 import "../../styles/wws.css";
 
 const WWS = () => {
+  const wwsDetail = [
+    {
+      image: service01,
+      header: "Quick Delivery",
+      desc: "Get all your deserts delivered to you anywhere in Lagos State without stress or worries",
+    },
+    {
+      image: service02,
+      header: "Easy Payment",
+      desc: "Make payment either on the app with your card or after recieving your product with ease and safety",
+    },
+    {
+      image: service03,
+      header: "Easy Pickup",
+      desc: "Pickup your products at any location of your choice in Lagos State or at the bakery",
+    },
+  ];
   return (
     <>
       <Container>
@@ -28,38 +45,27 @@ const WWS = () => {
               </p>
             </div>
           </Col>
-
-          <Col lg="4" md="6" sm="6" className="mt-5">
-            <div className="wws__content d-flex">
-              <img
-                src={service01}
-                alt="delivery"
-                className="wws-content-image"
-              />
-              <h5 className="fw-bold mb-3">
-                Quick delivery
-              </h5>
-            </div>
-          </Col>
-          <Col lg="4" md="6" sm="6">
-            <div className="wws__content d-flex">
-              <img
-                src={service02}
-                alt="payment"
-              />
-              <h5 className="fw-bold mb-3">
-                Easy payment
-              </h5>
-            </div>
-          </Col>
-          <Col lg="4" md="6" sm="6">
-            <div className="wws__content d-flex">
-              <img src={service03} alt="pickup" />
-              <h5 className="fw-bold mb-3">
-                Easy pickup
-              </h5>
-            </div>
-          </Col>
+          {wwsDetail.map((item, i) => (
+            <Col
+              lg="4"
+              md="6"
+              sm="6"
+              key={i}
+              className="mt-5"
+            >
+              <div className="wws__content text-center px-4 py-3">
+                <img
+                  src={item.image}
+                  alt="delivery"
+                  className="wws-content-image"
+                />
+                <h5 className="fw-bold mb-3">
+                  {item.header}
+                </h5>
+                <p>{item.desc}</p>
+              </div>
+            </Col>
+          ))}
         </Row>
       </Container>
     </>

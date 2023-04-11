@@ -1,5 +1,6 @@
 import React from "react";
-import { Col, Row } from "reactstrap";
+import { useState } from "react";
+import { Col, Row, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import "../styles/home.css";
@@ -7,16 +8,39 @@ import baking from "../assets/images/baking.png";
 import cake from "../assets/images/cake_vector.png";
 import cupcake from "../assets/images/cupcake_vector.png";
 import donut from "../assets/images/donut_vector.png";
+import smallchops from "../assets/images/smallchops_vector.png"
 import perfait from "../assets/images/perfait_vector.png";
+import desertdata from "../assets/fakeData/fakedata";
 
 import {
   Button,
   IconWrap,
   ServiceWrap,
+  PopularBtn,
+  ProductCard,
 } from "../components/StyledComponents/StyledComponents";
 import WWS from "../components/HomeComp/WWS";
 
 const Home = () => {
+  const [activeBtn, setActiveBtn] =
+    useState("ALL");
+
+  function activeDesert() {
+    if (activeBtn === "ALL") return desertdata;
+    if (activeBtn === "CAKES")
+      return desertdata.filter(
+        (item) => item.category === "CAKES"
+      );
+    if (activeBtn === "PERFAITS")
+      return desertdata.filter(
+        (item) => item.category === "PERFAITS"
+      );
+    if (activeBtn === "SMALLCHOPS")
+      return desertdata.filter(
+        (item) => item.category === "SMALLCHOPS"
+      );
+  }
+
   return (
     <div>
       <section className="home__intro">
@@ -111,12 +135,12 @@ const Home = () => {
                 height="70px"
               >
                 <img
-                  src={donut}
-                  alt="donut"
+                  src={smallchops}
+                  alt="smallchops"
                   className="vector__images2"
                 />
               </IconWrap>
-              <span>Dough nuts</span>
+              <span>Small Chops</span>
             </ServiceWrap>
           </Col>
           <Col lg="3" md="4" sm="6">
@@ -138,6 +162,104 @@ const Home = () => {
       </section>
       <section className="wws__section">
         <WWS />
+      </section>
+      <section>
+        <Container>
+          <Row>
+            <Col
+              lg="12"
+              md="12"
+              sm="12"
+              className="text-center mb-4"
+            >
+              <h5 className="popular__deserts__header fw-bold">
+                Popular Deserts
+              </h5>
+            </Col>
+            <Col
+              lg="12"
+              md="12"
+              sm="12"
+              className="mb-5"
+            >
+              <div className="popular__deserts__btn__wrap d-flex align-items-center justify-content-center gap-5">
+                <PopularBtn
+                  width="70px"
+                  className={
+                    activeBtn === "ALL"
+                      ? "activebtn"
+                      : ""
+                  }
+                  onClick={() =>
+                    setActiveBtn("ALL")
+                  }
+                >
+                  All
+                </PopularBtn>
+                <PopularBtn
+                  className={
+                    activeBtn === "CAKES"
+                      ? "activebtn"
+                      : ""
+                  }
+                  onClick={() =>
+                    setActiveBtn("CAKES")
+                  }
+                >
+                  Cakes
+                </PopularBtn>
+                <PopularBtn
+                  width="93px"
+                  className={
+                    activeBtn === "SMALLCHOPS"
+                      ? "activebtn"
+                      : ""
+                  }
+                  onClick={() =>
+                    setActiveBtn("SMALLCHOPS")
+                  }
+                >
+                  Smallchops
+                </PopularBtn>
+                <PopularBtn
+                  className={
+                    activeBtn === "PERFAITS"
+                      ? "activebtn"
+                      : ""
+                  }
+                  onClick={() =>
+                    setActiveBtn("PERFAITS")
+                  }
+                >
+                  Perfaits
+                </PopularBtn>
+              </div>
+            </Col>
+            {activeDesert().map((item, i) => (
+              <Col lg="3" md="6" sm="12">
+                <ProductCard>
+                  <img
+                    src={item.image}
+                    alt="product"
+                    className="product__image mb-2"
+                  />
+                  <h5 className="text-center">
+                    {item.name}
+                  </h5>
+                  <p className="text-center">
+                    {item.desc}
+                  </p>
+                  <div className="d-flex justify-content-between align-items-center gap-5">
+                    <span>₦{item.price}</span>
+                    <Button $primary width="80px">
+                      Modify
+                    </Button>
+                  </div>
+                </ProductCard>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </section>
     </div>
   );

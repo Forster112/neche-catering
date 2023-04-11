@@ -22,8 +22,19 @@ export const Button = styled.button`
   padding: 7px 2px;
   border: 2px solid #33548a;
   border-radius: 5px;
-  width: 125px;
+  width: ${props=>props.width};
   transition: 0.3s;
+`;
+
+export const PopularBtn = styled.button`
+  background: transparent;
+  color: #eaedf3;
+  font-size: 1.05rem;
+  padding: 2px;
+  border: none;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: 5px;
 `;
 
 export const IconWrap = styled.div`
@@ -55,9 +66,30 @@ export const ServiceWrap = styled.div`
   }
 `;
 
+export const ProductCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 20px;
+  border: 2px solid #add0ef;
+  background: #eaedf3;
+  margin-bottom: 30px;
+`;
+
+
+Button.defaultProps = {
+  "width": "125px"
+}
 
 IconWrap.defaultProps = {
   "width": "30px",
   "height": "30px",
   "background": "#ff2626"
+}
+
+PopularBtn.defaultProps = {
+  "width": "85px",
+  "height": "40px"
 }
