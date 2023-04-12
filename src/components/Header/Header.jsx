@@ -1,10 +1,13 @@
 import React from "react";
+import { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 import "../../styles/header.css";
 import logo from "../../assets/images/logo.png";
 
 const Header = () => {
+  const headerRef = useRef(null);
+
   const nav_links = [
     {
       display: "Home",
@@ -24,8 +27,21 @@ const Header = () => {
     },
   ];
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        headerRef.current.classList.add("header__fix")
+      } else {
+        headerRef.current.classList.remove("header__fix")
+      }
+    })
+    return () => {
+      window.removeEventListener("scroll", null)
+    };
+  }, []);
+
   return (
-    <header>
+    <header ref={headerRef}>
       <div className="nav d-flex align-items-center justify-content-between">
         <div className="logo d-flex align-items-center gap-4">
           <Link to="/home">
@@ -36,7 +52,15 @@ const Header = () => {
         <div className="navigate">
           <div className="left__navbar d-flex align-items-center gap-5">
             {nav_links.map((item, i) => (
-              <NavLink to={item.path} key={i}>
+              <NavLink
+                to={item.path}
+                key={i}
+                className={(navClass) =>
+                  navClass.isActive
+                    ? "active__nav"
+                    : ""
+                }
+              >
                 {item.display}
               </NavLink>
             ))}

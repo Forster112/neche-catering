@@ -65,3 +65,16 @@ header{
   font-size: 1rem;
   font-weight: 500;
 }
+
+.active__nav{
+  color: #ff2626 !important;
+}
+
+.header__fix{
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 88888;
+  box-sizing: 5px 5px 15px -5px #EAEDF3;
+}

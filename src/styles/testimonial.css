@@ -1,0 +1,33 @@
+.testimonial__title{
+  font-size: 1.3rem;
+}
+
+.testimonial__intro{
+  font-size: 2rem;
+}
+
+.testimonial__intro span{
+  color: #ff2626;
+}
+
+.testimonial__desc{
+  color: #789DC9;
+}
+
+.testimonial__image{
+  width: 580px;
+  height: 400px;
+}
+
+.review__text{
+  color: #789DC9;
+}
+
+.reviewer__name{
+  font-weight: 500;
+  font-family: "RocknRoll One", sans-serif !important;
+}
+
+.review__image{
+  width: 80px;
+}

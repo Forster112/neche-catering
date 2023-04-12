@@ -8,7 +8,7 @@ import baking from "../assets/images/baking.png";
 import cake from "../assets/images/cake_vector.png";
 import cupcake from "../assets/images/cupcake_vector.png";
 import donut from "../assets/images/donut_vector.png";
-import smallchops from "../assets/images/smallchops_vector.png"
+import smallchops from "../assets/images/smallchops_vector.png";
 import perfait from "../assets/images/perfait_vector.png";
 import desertdata from "../assets/fakeData/fakedata";
 
@@ -20,6 +20,8 @@ import {
   ProductCard,
 } from "../components/StyledComponents/StyledComponents";
 import WWS from "../components/HomeComp/WWS";
+import WhyUs from "../components/HomeComp/WhyUs";
+import Testimonial from "../components/HomeComp/Testimonial";
 
 const Home = () => {
   const [activeBtn, setActiveBtn] =
@@ -260,6 +262,12 @@ const Home = () => {
             ))}
           </Row>
         </Container>
+      </section>
+      <section>
+        <WhyUs />
+      </section>
+      <section>
+        <Testimonial />
       </section>
     </div>
   );
