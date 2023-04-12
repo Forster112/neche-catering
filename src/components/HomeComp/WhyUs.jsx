@@ -33,7 +33,7 @@ const WhyUs = () => {
           <ListGroup className="mt-4">
             <ListGroupItem className="border-0 ps-0">
               <p className="choose-us__title d-flex align-items-center gap-2">
-                <i class="ri-checkbox-circle-line"></i>
+                <i className="ri-checkbox-circle-line"></i>
                 Fresh and Tasty Deserts
               </p>
               <p className="choose-us__desc">
@@ -45,7 +45,7 @@ const WhyUs = () => {
 
             <ListGroupItem className="border-0 ps-0">
               <p className="choose-us__title d-flex align-items-center gap-2">
-                <i class="ri-checkbox-circle-line"></i>
+                <i className="ri-checkbox-circle-line"></i>
                 Quality Service
               </p>
               <p className="choose-us__desc">
@@ -57,7 +57,7 @@ const WhyUs = () => {
 
             <ListGroupItem className="border-0 ps-0">
               <p className="choose-us__title d-flex align-items-center gap-2">
-                <i class="ri-checkbox-circle-line"></i>
+                <i className="ri-checkbox-circle-line"></i>
                 Order from any where in Lagos
               </p>
               <p className="choose-us__desc">

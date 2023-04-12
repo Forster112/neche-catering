@@ -7,7 +7,7 @@ import "../styles/home.css";
 import baking from "../assets/images/baking.png";
 import cake from "../assets/images/cake_vector.png";
 import cupcake from "../assets/images/cupcake_vector.png";
-import donut from "../assets/images/donut_vector.png";
+// import donut from "../assets/images/donut_vector.png";
 import smallchops from "../assets/images/smallchops_vector.png";
 import perfait from "../assets/images/perfait_vector.png";
 import desertdata from "../assets/fakeData/fakedata";
@@ -45,6 +45,7 @@ const Home = () => {
 
   return (
     <div>
+      {/* Intro section */}
       <section className="home__intro">
         <Row>
           <Col sm="12" md="6" lg="6">
@@ -68,20 +69,20 @@ const Home = () => {
                 <Link to="/foods">
                   <Button $primary>
                     Order now{" "}
-                    <i class="ri-arrow-right-s-line"></i>
+                    <i className="ri-arrow-right-s-line"></i>
                   </Button>
                 </Link>
               </div>
               <div className="methods mt-4 d-flex gap-5">
                 <span className="d-flex align-items-center gap-3">
                   <IconWrap>
-                    <i class="ri-store-2-line"></i>
+                    <i className="ri-store-2-line"></i>
                   </IconWrap>
                   bakery pickup
                 </span>
                 <span className="d-flex align-items-center gap-3">
                   <IconWrap>
-                    <i class="ri-shield-check-line"></i>
+                    <i className="ri-shield-check-line"></i>
                   </IconWrap>
                   100% safe delivery
                 </span>
@@ -98,6 +99,7 @@ const Home = () => {
           </Col>
         </Row>
       </section>
+      {/* Service Image section */}
       <section className="servive__image">
         <Row>
           <Col lg="3" md="4" sm="6">
@@ -162,9 +164,11 @@ const Home = () => {
           </Col>
         </Row>
       </section>
+      {/* What we serve section */}
       <section className="wws__section">
         <WWS />
       </section>
+      {/* Popular Deserts section */}
       <section>
         <Container>
           <Row>
@@ -238,7 +242,7 @@ const Home = () => {
               </div>
             </Col>
             {activeDesert().map((item, i) => (
-              <Col lg="3" md="6" sm="12">
+              <Col lg="3" md="6" sm="12" key={i}>
                 <ProductCard>
                   <img
                     src={item.image}
@@ -263,9 +267,11 @@ const Home = () => {
           </Row>
         </Container>
       </section>
+      {/* Why us section */}
       <section>
         <WhyUs />
       </section>
+      {/* Testimonial section */}
       <section>
         <Testimonial />
       </section>

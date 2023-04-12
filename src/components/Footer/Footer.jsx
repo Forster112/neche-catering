@@ -66,17 +66,17 @@ const Footer = () => {
                 <div className="social__contacts d-flex align-items-center gap-4">
                   <IconWrap className="social__contacts-item">
                     <Link to="facebook.com">
-                      <i class="ri-facebook-line"></i>
+                      <i className="ri-facebook-line"></i>
                     </Link>
                   </IconWrap>
                   <IconWrap className="social__contacts-item">
                     <Link to="instagram.com">
-                      <i class="ri-instagram-line"></i>
+                      <i className="ri-instagram-line"></i>
                     </Link>
                   </IconWrap>
                   <IconWrap className="social__contacts-item">
                     <Link to="whatsapp.me">
-                      <i class="ri-whatsapp-line"></i>
+                      <i className="ri-whatsapp-line"></i>
                     </Link>
                   </IconWrap>
                 </div>

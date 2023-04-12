@@ -1,0 +1,27 @@
+.foods__category-wrap{
+  width: 100%;
+  height: 100%;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  background: #ADD0EF;
+}
+
+.foods__category-wrap div{
+    width: 100%;
+  height: 50px;
+  color: #000;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  padding: 0 35px;
+  /* background: #789DC9; */
+  cursor: pointer;
+}
+
+.active__kind{
+  border-right: 10px solid #33548A;
+  /* border-left: 10px solid #33548A; */
+  border-top: 1px solid #33548A;
+  border-bottom: 1px solid #33548A;
+}
