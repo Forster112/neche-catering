@@ -252,7 +252,7 @@ const Home = () => {
                   <h5 className="text-center">
                     {item.name}
                   </h5>
-                  <p className="text-center">
+                  <p className="product__desc-text text-center">
                     {item.desc}
                   </p>
                   <div className="d-flex justify-content-between align-items-center gap-5">

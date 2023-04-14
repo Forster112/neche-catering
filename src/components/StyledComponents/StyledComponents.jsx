@@ -8,7 +8,7 @@ export const Button = styled.button`
 
   &:hover {
     background: ${(props) =>
-      props.$primary ? "#000" : "#EAEDF3"};
+      props.$primary ? "#5a7baf" : "#EAEDF3"};
     border: ${(props) =>
       props.$primary
         ? "2px solid #33548a"
@@ -18,12 +18,12 @@ export const Button = styled.button`
       props.$primary ? "#EAEDF3" : "#33548A"};
   }
 
-  font-size: 1.05rem;
+  font-size: 1rem;
   padding: 7px 2px;
   border: 2px solid #33548a;
   border-radius: 5px;
-  width: ${props=>props.width};
-  transition: 0.3s;
+  width: ${(props) => props.width};
+  transition: 0.2s;
 `;
 
 export const PopularBtn = styled.button`
@@ -71,8 +71,8 @@ export const ProductCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  padding: 20px;
+  gap: ${props=> props.gap || "5px"};
+  padding: ${props=> props.padding};
   border: 2px solid #add0ef;
   background: #eaedf3;
   margin-bottom: 30px;
@@ -92,4 +92,8 @@ IconWrap.defaultProps = {
 PopularBtn.defaultProps = {
   "width": "85px",
   "height": "40px"
+}
+
+ProductCard.defaultProps = {
+  "padding": "20px"
 }

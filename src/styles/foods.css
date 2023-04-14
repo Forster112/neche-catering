@@ -1,27 +1,75 @@
-.foods__category-wrap{
+.foods__category-wrap {
   width: 100%;
   height: 100%;
   padding: 25px 0;
   display: flex;
   flex-direction: column;
-  background: #ADD0EF;
+  background: #add0ef;
 }
 
-.foods__category-wrap div{
-    width: 100%;
+.foods__category-wrap div {
+  width: 100%;
   height: 50px;
   color: #000;
   font-weight: 500;
   display: flex;
   align-items: center;
   padding: 0 35px;
-  /* background: #789DC9; */
   cursor: pointer;
+  transition: 0.9s;
 }
 
-.active__kind{
-  border-right: 10px solid #33548A;
-  /* border-left: 10px solid #33548A; */
-  border-top: 1px solid #33548A;
-  border-bottom: 1px solid #33548A;
+.foods__category-wrap div:hover {
+  background: #93b8d9;
+}
+
+.active__kind {
+  border-right: 10px solid #33548a;
+  background: #93b8d9;
+}
+
+.foods__title {
+  font-size: 1.8rem;
+}
+
+.foods__intro {
+  font-size: 1.3rem;
+}
+
+.foods__intro span {
+  color: #ff2626;
+}
+
+.customize__foods__inputs {
+  border: 2px solid #33548a;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+  color: #33548a;
+  font-family: "Istok Web", sans-serif;
+}
+
+.customize__foods__input {
+  width: 340px;
+  height: 50px;
+}
+
+.hidden{
+  display: none;
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(-50px);
+  transition: all 1s;
+}
+
+.show{
+  display: block;
+  transition-delay: 1000ms;
+}
+
+.show__effect{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+  transition-delay: 500ms;
 }
