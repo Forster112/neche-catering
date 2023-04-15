@@ -11,6 +11,7 @@ import cupcake from "../assets/images/cupcake_vector.png";
 import smallchops from "../assets/images/smallchops_vector.png";
 import perfait from "../assets/images/perfait_vector.png";
 import desertdata from "../assets/fakeData/fakedata";
+import { activeDesert } from "../assets/functions/neededFunctions";
 
 import {
   Button,
@@ -26,22 +27,6 @@ import Testimonial from "../components/HomeComp/Testimonial";
 const Home = () => {
   const [activeBtn, setActiveBtn] =
     useState("ALL");
-
-  function activeDesert() {
-    if (activeBtn === "ALL") return desertdata;
-    if (activeBtn === "CAKES")
-      return desertdata.filter(
-        (item) => item.category === "CAKES"
-      );
-    if (activeBtn === "PERFAITS")
-      return desertdata.filter(
-        (item) => item.category === "PERFAITS"
-      );
-    if (activeBtn === "SMALLCHOPS")
-      return desertdata.filter(
-        (item) => item.category === "SMALLCHOPS"
-      );
-  }
 
   return (
     <div>
@@ -241,7 +226,7 @@ const Home = () => {
                 </PopularBtn>
               </div>
             </Col>
-            {activeDesert().map((item, i) => (
+            {activeDesert(activeBtn).map((item, i) => (
               <Col lg="3" md="6" sm="12" key={i}>
                 <ProductCard>
                   <img

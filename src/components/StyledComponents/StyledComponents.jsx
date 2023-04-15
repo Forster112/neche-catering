@@ -71,8 +71,9 @@ export const ProductCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: ${props=> props.gap || "5px"};
-  padding: ${props=> props.padding};
+  font-family: "Istok Web", sans-serif;
+  gap: ${(props) => props.gap || "5px"};
+  padding: ${(props) => props.padding};
   border: 2px solid #add0ef;
   background: #eaedf3;
   margin-bottom: 30px;
