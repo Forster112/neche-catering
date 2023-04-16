@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Row, Col } from "reactstrap";
 
 import {
@@ -11,6 +11,47 @@ import { showInputs } from "../../assets/functions/neededFunctions";
 const PerfaitForm = () => {
   const perfaitTaskRef = useRef();
   const perfaitInputWrapRef = useRef();
+
+  const userInputsObj = {
+    type: "",
+    size: "",
+    descriptions: "",
+    pricesArr: [0, 0],
+  };
+
+  const [pUserInputData, setpUserInputsData] =
+    useState(userInputsObj);
+  
+  function setPTypePrice(e) {
+    let price = 0;
+    if (e.target.value === "Cake Perfait")
+      price = 3000;
+    if (e.target.value === "Yoghurt perfait")
+      price = 2000;
+    let addTp = pUserInputData.pricesArr.slice()
+    addTp[0] = price;
+    setpUserInputsData({
+      ...pUserInputData,
+      type: e.target.value,
+      pricesArr: addTp
+    });
+  }
+
+  function setPSizePrice(e) {
+    let price = 0;
+    if (e.target.value === "200ml") price = 1000
+    if (e.target.value === "500ml") price = 2200
+    if (e.target.value === "1L") price = 4100
+    let addSp = pUserInputData.pricesArr.slice();
+    addSp[1] = price;
+    setpUserInputsData({
+      ...pUserInputData,
+      size: e.target.value,
+      pricesArr: addSp
+    });
+  }
+
+  console.log(pUserInputData);
 
   return (
     <div>
@@ -39,39 +80,41 @@ const PerfaitForm = () => {
         <Row className="mb-5">
           <Col lg="4" md="6">
             <select
-              name=""
-              id=""
               className="customize__foods__inputs customize__foods__input"
+              onChange={(e) => setPTypePrice(e)}
             >
               <option value="type">Type</option>
-              <option value="yoghurt">
+              <option value="Yoghurt perfait">
                 Yoghort perfait
               </option>
-              <option value="cake">
+              <option value="Cake Perfait">
                 Cake perfait
               </option>
             </select>
           </Col>
           <Col lg="4" md="6">
             <select
-              name=""
-              id=""
               className="customize__foods__inputs customize__foods__input"
+              onChange={(e) => setPSizePrice(e)}
             >
               <option value="size">Size</option>
               <option value="200ml">200ml</option>
               <option value="500ml">500ml</option>
-              <option value="1l">1L</option>
+              <option value="1L">1L</option>
             </select>
           </Col>
           <Col lg="4">
             <textarea
-              name=""
-              id=""
               cols="36"
               rows="2"
               placeholder="Any information for the chef? e.g allegies"
               className="customize__foods__inputs"
+              onChange={(e) =>
+                setpUserInputsData({
+                  ...pUserInputData,
+                  descriptions: e.target.value,
+                })
+              }
             ></textarea>
           </Col>
         </Row>
@@ -83,18 +126,25 @@ const PerfaitForm = () => {
             >
               <h5>Choices</h5>
               <p>
-                Type: <span>Vanilla</span>
+                Type:{" "}
+                <span>{pUserInputData.type}</span>
               </p>
               <p>
-                Size: <span>2</span>
+                Size:{" "}
+                <span>{pUserInputData.size}</span>
               </p>
               <p>
                 Other Info:{" "}
-                <span>add happy birthday</span>
+                <span>
+                  {pUserInputData.descriptions}
+                </span>
               </p>
-              <Button $primary>
-                add to cart
-              </Button>
+              <div className="d-flex align-items-center justify-content-between w-50">
+                <span>₦ {pUserInputData.pricesArr.reduce((acc, val)=> acc + val, 1000)} </span>
+                <Button $primary>
+                  add to cart
+                </Button>
+              </div>
             </ProductCard>
           </Col>
         </Row>

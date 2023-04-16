@@ -17,9 +17,11 @@ export function activeDesert(state) {
 }
 
 export function showInputs(e, taskref, inputref) {
-  e.preventDefault()
+  e.preventDefault();
   taskref.current.textContent =
     "Fill out the form with what you love";
   e.target.classList.add("hidden");
   inputref.current.classList.add("show");
 }
+
+
