@@ -50,7 +50,7 @@ const Home = () => {
                 birthdays and personal consumption
               </p>
               <div className="intro__btns d-flex gap-5">
-                <Button>View gallery</Button>
+                <Button onClick={e=> window.location.href="/home#gallery"}>View gallery</Button>
                 <Link to="/foods">
                   <Button $primary>
                     Order now{" "}
@@ -154,7 +154,7 @@ const Home = () => {
         <WWS />
       </section>
       {/* Popular Deserts section */}
-      <section>
+      <section id="gallery">
         <Container>
           <Row>
             <Col
@@ -242,8 +242,8 @@ const Home = () => {
                   </p>
                   <div className="d-flex justify-content-between align-items-center gap-5">
                     <span>₦{item.price}</span>
-                    <Button $primary width="80px">
-                      Modify
+                    <Button $primary width="100px">
+                      Add to Cart
                     </Button>
                   </div>
                 </ProductCard>

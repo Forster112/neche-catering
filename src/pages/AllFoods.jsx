@@ -112,8 +112,8 @@ const AllFoods = () => {
                   </p>
                   <div className="d-flex justify-content-between align-items-center gap-5">
                     <span>₦{item.price}</span>
-                    <Button $primary width="80px">
-                      Modify
+                    <Button $primary width="100px">
+                      Add to Cart
                     </Button>
                   </div>
                 </ProductCard>

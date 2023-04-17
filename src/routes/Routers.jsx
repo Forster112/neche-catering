@@ -6,14 +6,13 @@ import {
 } from "react-router-dom";
 
 import AllFoods from "../pages/AllFoods";
-import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
 import FoodDetails from "../pages/FoodDetails";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Services from "../pages/Services";
+import About from "../pages/About";
 
 const Routers = () => {
   return (
@@ -27,7 +26,6 @@ const Routers = () => {
         path="/foods"
         element={<AllFoods />}
       />
-      <Route path="/cart" element={<Cart />} />
       <Route
         path="/checkout"
         element={<Checkout />}
@@ -46,8 +44,8 @@ const Routers = () => {
         element={<Register />}
       />
       <Route
-        path="/services"
-        element={<Services />}
+        path="/about"
+        element={<About />}
       />
     </Routes>
   );
