@@ -36,14 +36,14 @@ const desertdata = [
     desc: "two steps chocolate flavoured cake with red icing",
   },
   {
-    category: "CAKES",
+    category: "CUPCAKES",
     name: "Chocolate Cupcakes",
     image: image01,
     price: 1500,
     desc: "two steps chocolate flavoured cupcake",
   },
   {
-    category: "CAKES",
+    category: "CUPCAKES",
     name: "Vanilla Cupcakes",
     image: image01,
     price: 1500,

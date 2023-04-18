@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { Row, Col } from "reactstrap";
 
+import { useDispatch, useSelector } from "react-redux";
+import { desertTypeActions } from "../store/desert-type/desertTypeSlice";
+
 import "../styles/foods.css";
 import desertdata from "../assets/fakeData/fakedata";
 import {
@@ -12,10 +15,14 @@ import CakeForm from "../components/FoodsComp/CakeForm";
 import PerfaitForm from "../components/FoodsComp/PerfaitForm";
 import SnacksForm from "../components/FoodsComp/SnacksForm";
 import { activeDesert } from "../assets/functions/neededFunctions";
+import CupcakesForm from "../components/FoodsComp/CupcakesForm";
 
 const AllFoods = () => {
-  const [activeType, setActiveType] =
-    useState("CAKES");
+  
+  const dispatch = useDispatch();
+  const activeType = useSelector(
+    (state) => state.desertType.desertType
+  );
 
   return (
     <div>
@@ -24,7 +31,11 @@ const AllFoods = () => {
           <div className="foods__category-wrap gap-4">
             <div
               onClick={() =>
-                setActiveType("CAKES")
+                dispatch(
+                  desertTypeActions.changeType(
+                    "CAKES"
+                  )
+                )
               }
               className={
                 activeType === "CAKES"
@@ -36,7 +47,27 @@ const AllFoods = () => {
             </div>
             <div
               onClick={() =>
-                setActiveType("PERFAITS")
+                dispatch(
+                  desertTypeActions.changeType(
+                    "CUPCAKES"
+                  )
+                )
+              }
+              className={
+                activeType === "CUPCAKES"
+                  ? "active__kind"
+                  : ""
+              }
+            >
+              Cupcakes
+            </div>
+            <div
+              onClick={() =>
+                dispatch(
+                  desertTypeActions.changeType(
+                    "PERFAITS"
+                  )
+                )
               }
               className={
                 activeType === "PERFAITS"
@@ -48,7 +79,11 @@ const AllFoods = () => {
             </div>
             <div
               onClick={() =>
-                setActiveType("SMALLCHOPS")
+                dispatch(
+                  desertTypeActions.changeType(
+                    "SMALLCHOPS"
+                  )
+                )
               }
               className={
                 activeType === "SMALLCHOPS"
@@ -68,7 +103,7 @@ const AllFoods = () => {
               </h5>
               <p className="foods__intro mb-5">
                 Customize your taste and choices
-                or Choose and modify any of our{" "}
+                or Select any of our{" "}
                 <span>
                   recent highest selling
                 </span>{" "}
@@ -77,48 +112,57 @@ const AllFoods = () => {
               <div>
                 {(() => {
                   if (activeType === "CAKES") {
-                    return (
-                      <CakeForm/>
-                    );
+                    return <CakeForm />;
                   }
                   if (activeType === "PERFAITS") {
-                    return (
-                      <PerfaitForm/>
-                    );
+                    return <PerfaitForm />;
                   }
-                  if (activeType === "SMALLCHOPS") {
-                    return (
-                      <SnacksForm/>
-                    )
+                  if (
+                    activeType === "SMALLCHOPS"
+                  ) {
+                    return <SnacksForm />;
+                  }
+                  if (activeType === "CUPCAKES") {
+                    return <CupcakesForm />;
                   }
                 })()}
               </div>
             </div>
           </Row>
           <Row className="mb-5">
-            {activeDesert(activeType).map((item, i) => (
-              <Col lg="3" md="6" sm="12" key={i}>
-                <ProductCard>
-                  <img
-                    src={item.image}
-                    alt="product"
-                    className="product__image mb-2"
-                  />
-                  <h5 className="text-center">
-                    {item.name}
-                  </h5>
-                  <p className="text-center">
-                    {item.desc}
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center gap-5">
-                    <span>₦{item.price}</span>
-                    <Button $primary width="100px">
-                      Add to Cart
-                    </Button>
-                  </div>
-                </ProductCard>
-              </Col>
-            ))}
+            {activeDesert(activeType).map(
+              (item, i) => (
+                <Col
+                  lg="3"
+                  md="6"
+                  sm="12"
+                  key={i}
+                >
+                  <ProductCard>
+                    <img
+                      src={item.image}
+                      alt="product"
+                      className="product__image mb-2"
+                    />
+                    <h5 className="text-center">
+                      {item.name}
+                    </h5>
+                    <p className="text-center">
+                      {item.desc}
+                    </p>
+                    <div className="d-flex justify-content-between align-items-center gap-5">
+                      <span>₦{item.price}</span>
+                      <Button
+                        $primary
+                        width="100px"
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </ProductCard>
+                </Col>
+              )
+            )}
           </Row>
         </Col>
       </Row>

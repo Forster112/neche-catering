@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Col, Row, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { desertTypeActions } from "../store/desert-type/desertTypeSlice";
+
 import "../styles/home.css";
 import baking from "../assets/images/baking.png";
 import cake from "../assets/images/cake_vector.png";
@@ -28,6 +31,8 @@ const Home = () => {
   const [activeBtn, setActiveBtn] =
     useState("ALL");
 
+  const dispatch = useDispatch();
+
   return (
     <div>
       {/* Intro section */}
@@ -50,7 +55,14 @@ const Home = () => {
                 birthdays and personal consumption
               </p>
               <div className="intro__btns d-flex gap-5">
-                <Button onClick={e=> window.location.href="/home#gallery"}>View gallery</Button>
+                <Button
+                  onClick={(e) =>
+                    (window.location.href =
+                      "/home#gallery")
+                  }
+                >
+                  View gallery
+                </Button>
                 <Link to="/foods">
                   <Button $primary>
                     Order now{" "}
@@ -88,64 +100,108 @@ const Home = () => {
       <section className="servive__image">
         <Row>
           <Col lg="3" md="4" sm="6">
-            <ServiceWrap>
-              <IconWrap
-                width="70px"
-                height="70px"
+            <Link to="/foods">
+              <ServiceWrap
+                onClick={() =>
+                  dispatch(
+                    desertTypeActions.changeType(
+                      "CAKES"
+                    )
+                  )
+                }
               >
-                <img
-                  src={cake}
-                  alt="cake"
-                  className="vector__images"
-                />
-              </IconWrap>
-              <span>Cakes</span>
-            </ServiceWrap>
+                <IconWrap
+                  width="70px"
+                  height="70px"
+                  $primary
+                >
+                  <img
+                    src={cake}
+                    alt="cake"
+                    className="vector__images"
+                  />
+                </IconWrap>
+                <span>Cakes</span>
+              </ServiceWrap>
+            </Link>
           </Col>
           <Col lg="3" md="4" sm="6">
-            <ServiceWrap>
-              <IconWrap
-                width="70px"
-                height="70px"
+            <Link to="/foods">
+              <ServiceWrap
+                onClick={() =>
+                  dispatch(
+                    desertTypeActions.changeType(
+                      "CUPCAKES"
+                    )
+                  )
+                }
               >
-                <img
-                  src={cupcake}
-                  alt="cupcake"
-                  className="vector__images"
-                />
-              </IconWrap>
-              <span>Cup cakes</span>
-            </ServiceWrap>
+                <IconWrap
+                  width="70px"
+                  height="70px"
+                  $primary
+                >
+                  <img
+                    src={cupcake}
+                    alt="cupcake"
+                    className="vector__images"
+                  />
+                </IconWrap>
+                <span>Cup cakes</span>
+              </ServiceWrap>
+            </Link>
           </Col>
           <Col lg="3" md="4" sm="6">
-            <ServiceWrap>
-              <IconWrap
-                width="70px"
-                height="70px"
+            <Link to="/foods">
+              <ServiceWrap
+                onClick={() =>
+                  dispatch(
+                    desertTypeActions.changeType(
+                      "SMALLCHOPS"
+                    )
+                  )
+                }
               >
-                <img
-                  src={smallchops}
-                  alt="smallchops"
-                  className="vector__images2"
-                />
-              </IconWrap>
-              <span>Small Chops</span>
-            </ServiceWrap>
+                <IconWrap
+                  width="70px"
+                  height="70px"
+                  $primary
+                >
+                  <img
+                    src={smallchops}
+                    alt="smallchops"
+                    className="vector__images2"
+                  />
+                </IconWrap>
+                <span>Small Chops</span>
+              </ServiceWrap>
+            </Link>
           </Col>
           <Col lg="3" md="4" sm="6">
-            <ServiceWrap>
-              <IconWrap
-                width="70px"
-                height="70px"
+            <Link to="/foods">
+              <ServiceWrap
+                onClick={() =>
+                  dispatch(
+                    desertTypeActions.changeType(
+                      "PERFAITS"
+                    )
+                  )
+                }
               >
-                <img
-                  src={perfait}
-                  alt="perfait"
-                  className="vector__images"
-                />
-              </IconWrap>
-              <span>Perfaits</span>
-            </ServiceWrap>
+                <IconWrap
+                  width="70px"
+                  height="70px"
+                  $primary
+                >
+                  <img
+                    src={perfait}
+                    alt="perfait"
+                    className="vector__images"
+                  />
+                </IconWrap>
+                <span>Perfaits</span>
+              </ServiceWrap>
+            </Link>
           </Col>
         </Row>
       </section>
@@ -200,6 +256,18 @@ const Home = () => {
                   Cakes
                 </PopularBtn>
                 <PopularBtn
+                  className={
+                    activeBtn === "CUPCAKES"
+                      ? "activebtn"
+                      : ""
+                  }
+                  onClick={() =>
+                    setActiveBtn("CUPCAKES")
+                  }
+                >
+                  Cupcakes
+                </PopularBtn>
+                <PopularBtn
                   width="93px"
                   className={
                     activeBtn === "SMALLCHOPS"
@@ -226,29 +294,39 @@ const Home = () => {
                 </PopularBtn>
               </div>
             </Col>
-            {activeDesert(activeBtn).map((item, i) => (
-              <Col lg="3" md="6" sm="12" key={i}>
-                <ProductCard>
-                  <img
-                    src={item.image}
-                    alt="product"
-                    className="product__image mb-2"
-                  />
-                  <h5 className="text-center">
-                    {item.name}
-                  </h5>
-                  <p className="product__desc-text text-center">
-                    {item.desc}
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center gap-5">
-                    <span>₦{item.price}</span>
-                    <Button $primary width="100px">
-                      Add to Cart
-                    </Button>
-                  </div>
-                </ProductCard>
-              </Col>
-            ))}
+            {activeDesert(activeBtn).map(
+              (item, i) => (
+                <Col
+                  lg="3"
+                  md="6"
+                  sm="12"
+                  key={i}
+                >
+                  <ProductCard>
+                    <img
+                      src={item.image}
+                      alt="product"
+                      className="product__image mb-2"
+                    />
+                    <h5 className="text-center">
+                      {item.name}
+                    </h5>
+                    <p className="product__desc-text text-center">
+                      {item.desc}
+                    </p>
+                    <div className="d-flex justify-content-between align-items-center gap-5">
+                      <span>₦{item.price}</span>
+                      <Button
+                        $primary
+                        width="100px"
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </ProductCard>
+                </Col>
+              )
+            )}
           </Row>
         </Container>
       </section>

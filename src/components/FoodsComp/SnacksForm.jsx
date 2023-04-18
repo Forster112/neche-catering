@@ -11,7 +11,7 @@ import { showInputs } from "../../assets/functions/neededFunctions";
 const SnacksForm = () => {
   const snacksTaskRef = useRef();
   const snacksInputWrapRef = useRef();
-  const perfaitTypeRef = useRef();
+  const snacksTypeRef = useRef();
 
   const userInputsObj = {
     type: "",
@@ -24,8 +24,8 @@ const SnacksForm = () => {
     useState(userInputsObj);
 
   function setSnacksPrice1(e) {
-    const doughnutPrice = 250;
-    const smallChopsPrice = 900;
+    const doughnutPrice = 150;
+    const smallChopsPrice = 600;
 
     if (e.target.value === "Doughnuts") {
       setsUserInputsData({
@@ -48,8 +48,8 @@ const SnacksForm = () => {
   }
 
   function setSnacksPrice2(e) {
-    const doughnutPrice = 250;
-    const smallChopsPrice = 900;
+    const doughnutPrice = 150;
+    const smallChopsPrice = 600;
 
     if (sUserInputData.type === "Doughnuts") {
       setsUserInputsData({
@@ -95,7 +95,7 @@ const SnacksForm = () => {
           <Col lg="4" md="6">
             <select
               className="customize__foods__inputs customize__foods__input"
-              ref={perfaitTypeRef}
+              ref={snacksTypeRef}
               onChange={(e) => setSnacksPrice1(e)}
             >
               <option value="type">Type</option>

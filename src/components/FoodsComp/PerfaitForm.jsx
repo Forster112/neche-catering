@@ -51,8 +51,6 @@ const PerfaitForm = () => {
     });
   }
 
-  console.log(pUserInputData);
-
   return (
     <div>
       <p
@@ -140,7 +138,7 @@ const PerfaitForm = () => {
                 </span>
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
-                <span>₦ {pUserInputData.pricesArr.reduce((acc, val)=> acc + val, 1000)} </span>
+                <span>₦ {pUserInputData.pricesArr.reduce((acc, val)=> acc + val, 0)} </span>
                 <Button $primary>
                   add to cart
                 </Button>

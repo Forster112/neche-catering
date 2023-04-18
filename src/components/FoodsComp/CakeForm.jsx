@@ -188,7 +188,7 @@ const CakeForm = () => {
                 </span>
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
-                <span>₦ {userInputsData.pricesArr.reduce((acc, val)=> acc + val, 3000)}</span>
+                <span>₦ {userInputsData.pricesArr.reduce((acc, val)=> acc + val, 0)}</span>
                 <Button $primary>
                   add to cart
                 </Button>

@@ -14,6 +14,10 @@ export function activeDesert(state) {
     return desertdata.filter(
       (item) => item.category === "SMALLCHOPS"
     );
+  if (state === "CUPCAKES")
+    return desertdata.filter(
+      (item) => item.category === "CUPCAKES"
+    );
 }
 
 export function showInputs(e, taskref, inputref) {
