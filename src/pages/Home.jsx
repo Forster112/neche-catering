@@ -309,7 +309,7 @@ const Home = () => {
                       className="product__image mb-2"
                     />
                     <h5 className="text-center">
-                      {item.name}
+                      {item.title}
                     </h5>
                     <p className="product__desc-text text-center">
                       {item.desc}

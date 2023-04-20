@@ -145,7 +145,7 @@ const AllFoods = () => {
                       className="product__image mb-2"
                     />
                     <h5 className="text-center">
-                      {item.name}
+                      {item.title}
                     </h5>
                     <p className="text-center">
                       {item.desc}
