@@ -2,6 +2,9 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Row, Col } from "reactstrap";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice/cartSlice";
+
 import {
   Button,
   ProductCard,
@@ -20,6 +23,25 @@ const SnacksForm = () => {
     price: 0,
   };
 
+  const dispatch = useDispatch();
+  function addItem() {
+    for (
+      let i = 0;
+      i < sUserInputData.quantity;
+      i++
+    ) {
+      dispatch(
+        cartActions.addItem({
+          title: sUserInputData.type,
+          quantity: 1,
+          price: sUserInputData.price,
+          description:
+            sUserInputData.descriptions,
+        })
+      );
+    }
+  }
+
   const [sUserInputData, setsUserInputsData] =
     useState(userInputsObj);
 
@@ -31,18 +53,14 @@ const SnacksForm = () => {
       setsUserInputsData({
         ...sUserInputData,
         type: e.target.value,
-        price:
-          +sUserInputData.quantity *
-          doughnutPrice,
+        price: doughnutPrice,
       });
     }
     if (e.target.value === "Small Chops") {
       setsUserInputsData({
         ...sUserInputData,
         type: e.target.value,
-        price:
-          +sUserInputData.quantity *
-          smallChopsPrice,
+        price: smallChopsPrice,
       });
     }
   }
@@ -55,14 +73,14 @@ const SnacksForm = () => {
       setsUserInputsData({
         ...sUserInputData,
         quantity: e.target.value,
-        price: +e.target.value * doughnutPrice,
+        price: doughnutPrice,
       });
     }
     if (sUserInputData.type === "Small Chops") {
       setsUserInputsData({
         ...sUserInputData,
         quantity: e.target.value,
-        price: +e.target.value * smallChopsPrice,
+        price: smallChopsPrice,
       });
     }
   }
@@ -155,9 +173,12 @@ const SnacksForm = () => {
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
                 <span>
-                  ₦ {sUserInputData.price}{" "}
+                  ₦ {sUserInputData.price * sUserInputData.quantity}{" "}
                 </span>
-                <Button $primary>
+                <Button
+                  $primary
+                  onClick={addItem}
+                >
                   add to cart
                 </Button>
               </div>

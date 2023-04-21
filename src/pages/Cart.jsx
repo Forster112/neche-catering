@@ -16,6 +16,9 @@ const Cart = () => {
   const cartProducts = useSelector(
     (state) => state.cart.cartItems
   );
+  const productsTotalPrice = useSelector(
+    (state) => state.cart.totalAmount
+  );
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
@@ -42,7 +45,9 @@ const Cart = () => {
           )}
         </div>
         <div className="checkout__div_wrap">
-          <span>Total Price: ₦3500</span>
+          <span>
+            Total Price: ₦{productsTotalPrice}
+          </span>
           <Button>Checkout</Button>
         </div>
       </div>

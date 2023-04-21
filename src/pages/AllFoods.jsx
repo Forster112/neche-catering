@@ -4,6 +4,7 @@ import { Row, Col } from "reactstrap";
 
 import { useDispatch, useSelector } from "react-redux";
 import { desertTypeActions } from "../store/desert-type/desertTypeSlice";
+import { cartActions } from "../store/cartSlice/cartSlice";
 
 import "../styles/foods.css";
 import desertdata from "../assets/fakeData/fakedata";
@@ -23,6 +24,17 @@ const AllFoods = () => {
   const activeType = useSelector(
     (state) => state.desertType.desertType
   );
+
+  function addItem(item) {
+    dispatch(
+      cartActions.addItem({
+        title: item.title,
+        quantity: 1,
+        price: item.price,
+        description: item.desc,
+      })
+    );
+  }
 
   return (
     <div>
@@ -155,6 +167,7 @@ const AllFoods = () => {
                       <Button
                         $primary
                         width="100px"
+                        onClick={() => addItem(item)}
                       >
                         Add to Cart
                       </Button>

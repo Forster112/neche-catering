@@ -2,6 +2,9 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Row, Col } from "reactstrap";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice/cartSlice";
+
 import {
   Button,
   ProductCard,
@@ -20,6 +23,25 @@ const CupcakesForm = () => {
     price: 0,
   };
 
+  const dispatch = useDispatch();
+  function addItem() {
+    for (
+      let i = 0;
+      i < cUserInputData.quantity;
+      i++
+    ) {
+      dispatch(
+        cartActions.addItem({
+          title: `${cUserInputData.flavour} Cupcake`,
+          quantity: 1,
+          price: cUserInputData.price,
+          description:
+            cUserInputData.descriptions,
+        })
+      );
+    }
+  }
+
   const [cUserInputData, setcUserInputsData] =
     useState(cUserInputsObj);
 
@@ -32,26 +54,21 @@ const CupcakesForm = () => {
       setcUserInputsData({
         ...cUserInputData,
         flavour: e.target.value,
-        price:
-          +cUserInputData.quantity * vanillaPrice,
+        price: vanillaPrice,
       });
     }
     if (e.target.value === "Chocolate") {
       setcUserInputsData({
         ...cUserInputData,
         flavour: e.target.value,
-        price:
-          +cUserInputData.quantity *
-          chocolatePrice,
+        price: chocolatePrice,
       });
     }
     if (e.target.value === "Strawberry") {
       setcUserInputsData({
         ...cUserInputData,
         flavour: e.target.value,
-        price:
-          +cUserInputData.quantity *
-          strawberryPrice,
+        price: strawberryPrice,
       });
     }
   }
@@ -65,21 +82,21 @@ const CupcakesForm = () => {
       setcUserInputsData({
         ...cUserInputData,
         quantity: e.target.value,
-        price: +e.target.value * vanillaPrice,
+        price: vanillaPrice,
       });
     }
     if (cUserInputData.flavour === "Chocolate") {
       setcUserInputsData({
         ...cUserInputData,
         quantity: e.target.value,
-        price: +e.target.value * chocolatePrice,
+        price: chocolatePrice,
       });
     }
     if (cUserInputData.flavour === "Strawberry") {
       setcUserInputsData({
         ...cUserInputData,
         quantity: e.target.value,
-        price: +e.target.value * strawberryPrice,
+        price: strawberryPrice,
       });
     }
   }
@@ -113,9 +130,13 @@ const CupcakesForm = () => {
             <select
               className="customize__foods__inputs customize__foods__input"
               ref={cupcakeFlavourRef}
-              onChange={(e) => setcupcakesPrice1(e)}
+              onChange={(e) =>
+                setcupcakesPrice1(e)
+              }
             >
-              <option value="flavour">Flavour</option>
+              <option value="flavour">
+                Flavour
+              </option>
               <option value="Chocolate">
                 Chocolate
               </option>
@@ -132,7 +153,9 @@ const CupcakesForm = () => {
               type="number"
               placeholder="Quantity"
               className="customize__foods__inputs customize__foods__input"
-              onChange={(e) => setCupcakesPrice2(e)}
+              onChange={(e) =>
+                setCupcakesPrice2(e)
+              }
             />
           </Col>
           <Col lg="4">
@@ -159,7 +182,9 @@ const CupcakesForm = () => {
               <h5>Choices</h5>
               <p>
                 Flavour:{" "}
-                <span>{cUserInputData.flavour}</span>
+                <span>
+                  {cUserInputData.flavour}
+                </span>
               </p>
               <p>
                 Quantity:{" "}
@@ -175,9 +200,12 @@ const CupcakesForm = () => {
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
                 <span>
-                  ₦ {cUserInputData.price}{" "}
+                  ₦ {cUserInputData.price * cUserInputData.quantity}{" "}
                 </span>
-                <Button $primary>
+                <Button
+                  $primary
+                  onClick={addItem}
+                >
                   add to cart
                 </Button>
               </div>

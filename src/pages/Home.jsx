@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Col, Row, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { desertTypeActions } from "../store/desert-type/desertTypeSlice";
+import { cartActions } from "../store/cartSlice/cartSlice";
 
 import "../styles/home.css";
 import baking from "../assets/images/baking.png";
@@ -32,6 +33,15 @@ const Home = () => {
     useState("ALL");
 
   const dispatch = useDispatch();
+
+  function addItem(item) {
+    dispatch(cartActions.addItem({
+      title: item.title,
+      quantity: 1,
+      price: item.price,
+      description: item.desc,
+    }))
+  }
 
   return (
     <div>
@@ -319,6 +329,9 @@ const Home = () => {
                       <Button
                         $primary
                         width="100px"
+                        onClick={() =>
+                          addItem(item)
+                        }
                       >
                         Add to Cart
                       </Button>

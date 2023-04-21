@@ -2,6 +2,9 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Row, Col } from "reactstrap";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice/cartSlice";
+
 import {
   Button,
   ProductCard,
@@ -20,12 +23,28 @@ const CakeForm = () => {
     pricesArr: [0, 0, 0],
   };
 
+  const dispatch = useDispatch();
+  function addItem() {
+    dispatch(
+      cartActions.addItem({
+        title: `${userInputsData["number of layers"]} layer(s) ${userInputsData.flavour} Cake`,
+        quantity: 1,
+        price: userInputsData.pricesArr.reduce(
+          (acc, val) => acc + val,
+          0
+        ),
+        description: `${userInputsData.descriptions}, Starting size: ${userInputsData["layer size"]}`,
+      })
+    );
+  }
+
   const [userInputsData, setUserInputsData] =
     useState(userInputsObj);
 
   function setUserFlavourData(e) {
     let price = 0;
-    if (e.target.value === "Vanilla") price = 1000;
+    if (e.target.value === "Vanilla")
+      price = 1000;
     if (e.target.value === "Chocolate")
       price = 1200;
     if (e.target.value === "Chocolate & Vanilla")
@@ -188,8 +207,17 @@ const CakeForm = () => {
                 </span>
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
-                <span>₦ {userInputsData.pricesArr.reduce((acc, val)=> acc + val, 0)}</span>
-                <Button $primary>
+                <span>
+                  ₦{" "}
+                  {userInputsData.pricesArr.reduce(
+                    (acc, val) => acc + val,
+                    0
+                  )}
+                </span>
+                <Button
+                  $primary
+                  onClick={addItem}
+                >
                   add to cart
                 </Button>
               </div>

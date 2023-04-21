@@ -2,6 +2,10 @@ import React from "react";
 import { useRef, useState } from "react";
 import { Row, Col } from "reactstrap";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice/cartSlice";
+
+
 import {
   Button,
   ProductCard,
@@ -18,6 +22,21 @@ const PerfaitForm = () => {
     descriptions: "",
     pricesArr: [0, 0],
   };
+
+  const dispatch = useDispatch();
+  function addItem() {
+    dispatch(
+      cartActions.addItem({
+        title: `${pUserInputData.size} ${pUserInputData.type}`,
+        quantity: 1,
+        price: pUserInputData.pricesArr.reduce(
+          (acc, val) => acc + val,
+          0
+        ),
+        description: pUserInputData.descriptions,
+      })
+    );
+  }
 
   const [pUserInputData, setpUserInputsData] =
     useState(userInputsObj);
@@ -82,11 +101,11 @@ const PerfaitForm = () => {
               onChange={(e) => setPTypePrice(e)}
             >
               <option value="type">Type</option>
-              <option value="Yoghurt perfait">
-                Yoghort perfait
+              <option value="Yoghurt Perfait">
+                Yoghort Perfait
               </option>
               <option value="Cake Perfait">
-                Cake perfait
+                Cake Perfait
               </option>
             </select>
           </Col>
@@ -139,7 +158,7 @@ const PerfaitForm = () => {
               </p>
               <div className="d-flex align-items-center justify-content-between w-50">
                 <span>₦ {pUserInputData.pricesArr.reduce((acc, val)=> acc + val, 0)} </span>
-                <Button $primary>
+                <Button $primary onClick={addItem}>
                   add to cart
                 </Button>
               </div>

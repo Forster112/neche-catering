@@ -1,23 +1,51 @@
 import React from "react";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cartSlice/cartSlice";
+
 import "../../styles/cartitem.css";
 
-const CartItem = () => {
+const CartItem = (props) => {
+  const { title, quantity, price, description } =
+    props.item;
+
+  const dispatch = useDispatch();
+
+  function addItem() {
+    dispatch(
+      cartActions.addItem({
+        title,
+        quantity,
+        price,
+        description,
+      })
+    );
+  }
+
+  function removeItem() {
+    dispatch(cartActions.removeItem(props.item));
+  }
+
+  function deleteItem() {
+    dispatch(cartActions.deleteItem(props.item));
+  }
+
   return (
     <div className="cartItem__wrap">
-      <h6 className="cartItem__title">
-        Cake Perfait
-      </h6>
+      <h6 className="cartItem__title">{title}</h6>
       <p className="cartItem__price">
-        1x <span> ₦2500</span>
+        {quantity}x <span> ₦{price}</span>
       </p>
       <span className="cartItem__delete">
-        <i className="ri-close-line"></i>
+        <i className="ri-close-line" onClick={deleteItem}></i>
       </span>
       <div className="cartItem__quantity">
-        <i className="ri-add-line"></i>
-        <span>1</span>
-        <i className="ri-subtract-fill"></i>
+        <i className="ri-subtract-fill" onClick={removeItem}></i>
+        <span>{quantity}</span>
+        <i
+          className="ri-add-line"
+          onClick={addItem}
+        ></i>
       </div>
     </div>
   );

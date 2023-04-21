@@ -27,5 +27,3 @@ export function showInputs(e, taskref, inputref) {
   e.target.classList.add("hidden");
   inputref.current.classList.add("show");
 }
-
-

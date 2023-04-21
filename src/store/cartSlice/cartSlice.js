@@ -16,7 +16,10 @@ const cartSlice = createSlice({
       const newItem = action.payload;
       const existingItem = _.find(
         state.cartItems,
-        newItem
+        (x) =>
+          x.title === newItem.title &&
+          x.price === newItem.price &&
+          x.description === newItem.description
       );
 
       state.totalQuantity++;
@@ -49,7 +52,10 @@ const cartSlice = createSlice({
       const item = action.payload;
       const existingItem = _.find(
         state.cartItems,
-        item
+        (x) =>
+          x.title === item.title &&
+          x.price === item.price &&
+          x.description === item.description
       );
       state.totalQuantity--;
       if (existingItem.quantity === 1) {
@@ -73,7 +79,10 @@ const cartSlice = createSlice({
       const item = action.payload;
       const existingItem = _.find(
         state.cartItems,
-        item
+        (x) =>
+          x.title === item.title &&
+          x.price === item.price &&
+          x.description === item.description
       );
 
       if (existingItem) {

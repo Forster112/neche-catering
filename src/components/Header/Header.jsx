@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../../styles/header.css";
 import logo from "../../assets/images/logo.png";
@@ -16,6 +16,10 @@ const Header = () => {
   const toggleCart = () => {
     dispatch(cartUiActions.toggle())
   };
+
+   const productsTotalQuantity = useSelector(
+     (state) => state.cart.totalQuantity
+   );
 
   const nav_links = [
     {
@@ -77,9 +81,12 @@ const Header = () => {
         </div>
 
         <div className="right__navbar d-flex gap-5">
-          <span className="cart" onClick={toggleCart}>
+          <span
+            className="cart"
+            onClick={toggleCart}
+          >
             <i className="ri-shopping-basket-fill"></i>
-            <span>0</span>
+            <span>{productsTotalQuantity}</span>
           </span>
           <span className="user">
             <Link to="/login">
