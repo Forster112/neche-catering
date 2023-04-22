@@ -18,7 +18,7 @@ export const Button = styled.button`
       props.$primary ? "#EAEDF3" : "#33548A"};
   }
 
-  font-size: 1rem;
+  font-size: ${(props)=> props["font-size"]};
   padding: 7px 2px;
   border: 2px solid #33548a;
   border-radius: 5px;
@@ -82,7 +82,8 @@ export const ProductCard = styled.div`
 
 
 Button.defaultProps = {
-  "width": "125px"
+  "width": "125px",
+  "font-size": "1rem"
 }
 
 IconWrap.defaultProps = {

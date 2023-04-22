@@ -33,3 +33,44 @@
   height: 330px;
   width: 420px;
 }
+
+.about__contact-image{
+  width: 250px;
+}
+
+.contact__details-div{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__details-div span{
+  font-size: 1.2rem;
+}
+
+.contact__details-div span i{
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+.newsletter{
+  margin: 5px 0 -8px 0 !important;
+  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+}
+
+.newsletter__wrap{
+  padding: 7px;
+  border: 1px solid #33548A;
+  width: fit-content;
+  border-radius: 5px;
+  margin-top: 0;
+}
+
+.newsletter__wrap input{
+  border: none;
+  padding: 5px;
+  font-size: 1.1rem;
+  width: 19rem;
+  outline: none;
+}

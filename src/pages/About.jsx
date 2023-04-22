@@ -1,10 +1,17 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+// import { Button } from "react-router-dom";
+
+import {
+  IconWrap,
+  Button,
+} from "../components/StyledComponents/StyledComponents";
 
 import "../styles/about.css";
 import cake_shop from "../assets/images/catering-shop.png";
 import chef_image from "../assets/images/chef-image.png";
-import services_image from '../assets/images/services-image.png'
+import services_image from "../assets/images/services-image.png";
+import contact_image from "../assets/images/contact-image.png";
 
 const About = () => {
   return (
@@ -90,6 +97,71 @@ const About = () => {
               alt="Our services"
               className="about__chef-image"
             />
+          </Col>
+        </Row>
+        <Row className="mb-5 align-items-center">
+          <Col>
+            <img
+              src={contact_image}
+              alt="contact image"
+              className="about__contact-image"
+            />
+          </Col>
+          <Col>
+            <h6>CONTACT US</h6>
+            <p>
+              You can contact neche catering
+              through email, phone or any of our
+              social media handles provided below.
+            </p>
+            <div className="contact__details-div">
+              <span>
+                <i class="ri-mail-fill"></i>{" "}
+                forstermichael112@gmail.com
+              </span>
+              <span>
+                <i class="ri-phone-fill"></i>{" "}
+                +2348113778736
+              </span>
+              <div className="d-flex gap-4">
+                <IconWrap className="social__contacts-item">
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                  >
+                    <i className="ri-facebook-line"></i>
+                  </a>
+                </IconWrap>
+                <IconWrap className="social__contacts-item">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                  >
+                    <i className="ri-instagram-line"></i>
+                  </a>
+                </IconWrap>
+                <IconWrap className="social__contacts-item">
+                  <a
+                    href="https://wa.me/+2348113778736"
+                    target="_blank"
+                  >
+                    <i className="ri-whatsapp-line"></i>
+                  </a>
+                </IconWrap>
+              </div>
+              <p className="newsletter">
+                Also subscribe to our newsletter
+              </p>
+              <div className="newsletter__wrap">
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                />{" "}
+                <Button $primary width="55px">
+                  <i class="ri-send-plane-fill"></i>
+                </Button>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

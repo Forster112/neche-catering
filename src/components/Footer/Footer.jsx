@@ -65,19 +65,28 @@ const Footer = () => {
               <ListGroupItem className="opening__hours-item border-0 ps-0">
                 <div className="social__contacts d-flex align-items-center gap-4">
                   <IconWrap className="social__contacts-item">
-                    <Link to="facebook.com">
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                    >
                       <i className="ri-facebook-line"></i>
-                    </Link>
+                    </a>
                   </IconWrap>
                   <IconWrap className="social__contacts-item">
-                    <Link to="instagram.com">
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                    >
                       <i className="ri-instagram-line"></i>
-                    </Link>
+                    </a>
                   </IconWrap>
                   <IconWrap className="social__contacts-item">
-                    <Link to="whatsapp.me">
+                    <a
+                      href="https://wa.me/+2348113778736"
+                      target="_blank"
+                    >
                       <i className="ri-whatsapp-line"></i>
-                    </Link>
+                    </a>
                   </IconWrap>
                 </div>
               </ListGroupItem>
