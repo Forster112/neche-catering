@@ -1,0 +1,43 @@
+.checkout__header{
+  display: flex;
+  align-items: center;
+  background-color: #ADD0EF;
+  height: 120px;
+  padding-left: 300px;
+  font-size: 3rem;
+  font-family: "RocknRoll One", sans-serif;
+  color: #33548A;
+}
+
+.checkout_radio_wrap{
+  display: flex;
+  gap: 20px;
+  font-size: 1.3rem;
+  font-family: "Istok Web", sans-serif;
+}
+
+.checkout_radio_wrap input{
+  width: 1.2rem;
+}
+
+.checkout__input-wrap input{
+  width: 90%;
+  height: 60px;
+  border: none;
+  border-bottom: 1px solid #33548A;
+  outline: none;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+}
+
+.paymentMethod__radio{
+  display: flex;
+  gap:20px;
+  align-items: center;
+  font-size: 1.25rem;
+  margin-bottom: -10px;
+}
+
+.paymentMethod__radio input{
+  width: 1.2rem;
+}

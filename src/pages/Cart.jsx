@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import {
   useDispatch,
   useSelector,
@@ -48,7 +50,9 @@ const Cart = () => {
           <span>
             Total Price: ₦{productsTotalPrice}
           </span>
-          <Button>Checkout</Button>
+          <Link to={productsTotalPrice !== 0 ? "/checkout" : null}>
+            <Button onClick={toggleCart}>Checkout</Button>
+          </Link>
         </div>
       </div>
     </div>
