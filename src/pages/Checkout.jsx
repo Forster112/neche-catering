@@ -1,47 +1,68 @@
 import React from "react";
 import {
   useState,
-  useRef,
   useEffect,
 } from "react";
 
+import { useSelector } from "react-redux";
+
 import { Container, Row, Col } from "reactstrap";
 
-import { Button } from "../components/StyledComponents/StyledComponents";
+import {
+  Button,
+  ServiceWrap,
+} from "../components/StyledComponents/StyledComponents";
 import "../styles/checkout.css";
 
 const Checkout = () => {
-  const [deliveryMethod, setDeliveryMethod] =
-    useState("Home Delivery");
 
-  const [paymentMethod, setPaymentMethod] =
-    useState("Online Payment");
   
-  const [isDisabled, setIsDisabled] = useState(false);
-
+  const [deliveryMethod, setDeliveryMethod] =
+  useState("Home Delivery");
+  
+  const [paymentMethod, setPaymentMethod] =
+  useState("Online Payment");
+  
+  const [isDisabled, setIsDisabled] =
+    useState(false);
+  
+  const [serviceChargePrice, setServiceChargePrice] = useState(400);
+  
   function selectDeliveryMethod(e) {
     setDeliveryMethod(e.target.value);
   }
-
+  
   function selectPaymentMethod(e) {
     setPaymentMethod(e.target.value);
   }
-
+  
   useEffect(() => {
-    deliveryMethod === "Home Delivery"
-      ? setIsDisabled(false)
-      : setIsDisabled(true);
+    if (deliveryMethod === "Home Delivery") {
+      setIsDisabled(false)
+      setServiceChargePrice(400)
+    } else {
+      setIsDisabled(true)
+      setServiceChargePrice(0)
+    }
   }, [deliveryMethod]);
+
+  const productsTotalPrice = useSelector(
+    (state) => state.cart.totalAmount
+  );
 
   return (
     <div>
       <div className="checkout__header mb-5">
         CHECKOUT
       </div>
-      <Container>
+      <Container className="mb-5">
         <Row>
-          <Col lg="8" md="12" sm="12">
-            <div className="d-flex flex-column gap-3 mb-5">
+          <Col lg="8" md="8" sm="12">
+            <h3 className="mb-5">Delivery Details</h3>
+            <div className="d-flex flex-column gap-3 mb-3">
+              <p className="mb-0 fs-5">
+                Select preffered delivery method
+              </p>
               <div className="checkout_radio_wrap">
                 <input
                   type="radio"
@@ -80,15 +101,18 @@ const Checkout = () => {
             <div className="checkout__input-wrap mb-5 d-flex flex-column gap-4">
               <input
                 type="text"
-                placeholder="Enter Your Name"
+                placeholder="Enter Your Name*"
+                required
               />
               <input
-                type="text"
-                placeholder="Enter Your Email"
+                type="email"
+                placeholder="Enter Your Email*"
+                required
               />
               <input
-                type="text"
-                placeholder="Phone Number"
+                type="tel"
+                placeholder="Phone Number*"
+                required
               />
               <input
                 type="text"
@@ -97,7 +121,7 @@ const Checkout = () => {
               />
               <input
                 type="text"
-                placeholder="City"
+                placeholder="State"
                 disabled={isDisabled}
               />
               <input
@@ -105,7 +129,10 @@ const Checkout = () => {
                 placeholder="Country"
                 disabled={isDisabled}
               />
-              <div className="d-flex flex-column">
+              <div className="d-flex flex-column mt-3">
+                <p className="mb-0 fs-5">
+                  Select payment method
+                </p>
                 <div className="paymentMethod__radio">
                   <input
                     type="radio"
@@ -144,8 +171,22 @@ const Checkout = () => {
               <Button $primary>checkout</Button>
             </div>
           </Col>
-          <Col>
-            <div>yes</div>
+          <Col lg="4" md="4" sm="12">
+            <ServiceWrap
+              width="370px"
+              padding="35px"
+            >
+              <div className="checkout__total-card">
+                Subtotal:<span>₦{productsTotalPrice}</span>
+              </div>
+              <div className="checkout__total-card">
+                Service charge:<span>₦{serviceChargePrice}</span>
+              </div>
+              <div className="totalprice__separator"></div>
+              <div className="checkout__total-card">
+                Total:<span>₦{productsTotalPrice + serviceChargePrice}</span>
+              </div>
+            </ServiceWrap>
           </Col>
         </Row>
       </Container>

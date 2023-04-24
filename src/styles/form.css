@@ -1,0 +1,33 @@
+.fancy__div{
+   background-color: #ADD0EF;
+  height: 90px;
+}
+
+.login__form{
+  width: 100%;
+}
+
+.login__form input{
+  width: 90%;
+  height: 35px;
+  border: none;
+  background-color: inherit;
+  color: #33548A;
+  border-bottom: 1px solid #33548A;
+  outline: none;
+  font-size: 1rem;
+  padding-left: 1rem;
+}
+
+.login__form input::placeholder{
+  color: #33548A;
+  font-size: 0.8rem;
+}
+
+.account__mov {
+  font-size: 1.1rem;
+}
+
+.account__mov span{
+  color: #33548A;
+}

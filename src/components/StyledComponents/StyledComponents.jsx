@@ -54,16 +54,24 @@ export const ServiceWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: ${(props) =>
+    props.$primary
+      ? "row"
+      : "column"};
   gap: 30px;
   background: #add0ef;
   color: #000;
   border-radius: 5px;
   transition: 0.3s;
-  padding: 20px;
+  padding: ${props=>props.padding};
+  width: ${props=>props.width};
   font-family: "RocknRoll One", sans-serif !important;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: ${(props) =>
+      props.$primary
+        ? "translateY(-10px)"
+        : "none"};
   }
 `;
 
@@ -99,4 +107,8 @@ PopularBtn.defaultProps = {
 
 ProductCard.defaultProps = {
   "padding": "20px"
+}
+
+ServiceWrap.defaultProps = {
+  "padding" : "20px"
 }

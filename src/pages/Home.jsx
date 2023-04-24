@@ -112,6 +112,7 @@ const Home = () => {
           <Col lg="3" md="4" sm="6">
             <Link to="/foods">
               <ServiceWrap
+                $primary
                 onClick={() =>
                   dispatch(
                     desertTypeActions.changeType(
@@ -138,6 +139,7 @@ const Home = () => {
           <Col lg="3" md="4" sm="6">
             <Link to="/foods">
               <ServiceWrap
+                $primary
                 onClick={() =>
                   dispatch(
                     desertTypeActions.changeType(
@@ -164,6 +166,7 @@ const Home = () => {
           <Col lg="3" md="4" sm="6">
             <Link to="/foods">
               <ServiceWrap
+                $primary
                 onClick={() =>
                   dispatch(
                     desertTypeActions.changeType(
@@ -190,6 +193,7 @@ const Home = () => {
           <Col lg="3" md="4" sm="6">
             <Link to="/foods">
               <ServiceWrap
+                $primary
                 onClick={() =>
                   dispatch(
                     desertTypeActions.changeType(

@@ -50,7 +50,7 @@ const Cart = () => {
           <span>
             Total Price: ₦{productsTotalPrice}
           </span>
-          <Link to={productsTotalPrice !== 0 ? "/checkout" : null}>
+          <Link to={productsTotalPrice !== 0 ? "/checkout" : "/foods"}>
             <Button onClick={toggleCart}>Checkout</Button>
           </Link>
         </div>
