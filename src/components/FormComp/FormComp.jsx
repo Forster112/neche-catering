@@ -2,10 +2,7 @@ import React from "react";
 
 import { Container } from "reactstrap";
 
-import {
-  ServiceWrap,
-  Button,
-} from "../../components/StyledComponents/StyledComponents";
+import { ServiceWrap } from "../../components/StyledComponents/StyledComponents";
 import "../../styles/form.css";
 
 const FormComp = (props) => {
@@ -24,7 +21,6 @@ const FormComp = (props) => {
               className="login__form d-flex flex-column gap-4 align-items-center justify-content-center"
             >
               {props.children}
-              <Button $primary>{props.type}</Button>
             </form>
           </ServiceWrap>
         </div>

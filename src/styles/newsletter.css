@@ -1,0 +1,15 @@
+.newsletter__wrapper {
+  border: 1px solid #c0c6d1;
+  margin: 20px;
+}
+
+.separate{
+  width: 100% !important;
+  height: 1px;
+  background-color: #c0c6d1;
+}
+
+.newsletter__radio{
+  width: 1.1rem;
+  height: 1.1rem;
+}

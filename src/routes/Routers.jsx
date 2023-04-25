@@ -8,7 +8,7 @@ import {
 import AllFoods from "../pages/AllFoods";
 import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
-import FoodDetails from "../pages/FoodDetails";
+import Profile from "../pages/Profile";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -35,8 +35,8 @@ const Routers = () => {
         element={<Contact />}
       />
       <Route
-        path="/foods/:id"
-        element={<FoodDetails />}
+        path="/profile"
+        element={<Profile />}
       />
       <Route path="/login" element={<Login />} />
       <Route

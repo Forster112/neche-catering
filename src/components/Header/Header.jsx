@@ -2,7 +2,10 @@ import React from "react";
 import { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import {
+  useDispatch,
+  useSelector,
+} from "react-redux";
 
 import "../../styles/header.css";
 import logo from "../../assets/images/logo.png";
@@ -14,12 +17,18 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const toggleCart = () => {
-    dispatch(cartUiActions.toggle())
+    dispatch(cartUiActions.toggle());
   };
 
-   const productsTotalQuantity = useSelector(
-     (state) => state.cart.totalQuantity
-   );
+  const productsTotalQuantity = useSelector(
+    (state) => state.cart.totalQuantity
+  );
+
+  const userLoggedIn = useSelector(
+    (state) => state.userSlice.isLoggedIn
+  );
+
+  console.log(userLoggedIn);
 
   const nav_links = [
     {
@@ -42,14 +51,21 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current?.classList?.add("header__fix")
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current?.classList?.add(
+          "header__fix"
+        );
       } else {
-        headerRef.current?.classList?.remove("header__fix")
+        headerRef.current?.classList?.remove(
+          "header__fix"
+        );
       }
-    })
+    });
     return () => {
-      window.removeEventListener("scroll", null)
+      window.removeEventListener("scroll", null);
     };
   }, []);
 
@@ -89,7 +105,7 @@ const Header = () => {
             <span>{productsTotalQuantity}</span>
           </span>
           <span className="user">
-            <Link to="/login">
+            <Link to={userLoggedIn ? "/profile" : "/login"}>
               <i className="ri-user-fill"></i>
             </Link>
           </span>

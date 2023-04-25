@@ -1,0 +1,16 @@
+.orders__wrap{
+  padding: 20px;
+  border: 1px solid #ADD0EF;
+  color: #33548a;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.orders__wrap p{
+  margin-bottom: 0;
+  line-height: 25px;
+}
+
+.orders__wrap p span{
+  margin-left: 25px;
+}
