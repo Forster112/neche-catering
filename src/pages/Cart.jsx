@@ -22,8 +22,20 @@ const Cart = () => {
     (state) => state.cart.totalAmount
   );
 
+  const userLoggedIn = useSelector(
+    (state) => state.userSlice.isLoggedIn
+  );
+
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
+  };
+
+  const determineRoute = function () {
+    if (productsTotalPrice !== 0 && userLoggedIn)
+      return "/checkout";
+    if (productsTotalPrice !== 0 && !userLoggedIn)
+      return "/login";
+    if (productsTotalPrice === 0) return "/foods";
   };
 
   return (
@@ -50,8 +62,10 @@ const Cart = () => {
           <span>
             Total Price: ₦{productsTotalPrice}
           </span>
-          <Link to={productsTotalPrice !== 0 ? "/checkout" : "/foods"}>
-            <Button onClick={toggleCart}>Checkout</Button>
+          <Link to={determineRoute()}>
+            <Button onClick={toggleCart}>
+              Checkout
+            </Button>
           </Link>
         </div>
       </div>
