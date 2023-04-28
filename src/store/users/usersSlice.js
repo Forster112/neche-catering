@@ -27,7 +27,7 @@ const userSlice = createSlice({
 
       if (!existingUser) {
         state.allUsers.push(newUser);
-        state.loggedInUser = newUser
+        state.loggedInUser = newUser;
         state.isLoggedIn = true;
       }
     },
@@ -41,7 +41,7 @@ const userSlice = createSlice({
 
       if (existingUser) {
         state.allUsers.splice(existingUser, 1);
-        state.loggedInUser = {}
+        state.loggedInUser = {};
         state.isLoggedIn = false;
       }
     },
@@ -56,8 +56,7 @@ const userSlice = createSlice({
 
       if (existingUser) {
         state.isLoggedIn = true;
-        state.loggedInUser = existingUser
-          user.password;
+        state.loggedInUser = existingUser;
       }
     },
 
@@ -68,7 +67,45 @@ const userSlice = createSlice({
 
       if (loggedInUser) {
         state.isLoggedIn = false;
-        state.loggedInUser = {}
+        state.loggedInUser = {};
+      }
+    },
+
+    modifyUser(state, action) {
+      const newUserData = action.payload;
+      const user = state.allUsers.find(
+        (item) =>
+          item.email ===
+            state.loggedInUser.email &&
+          item.password ===
+            state.loggedInUser.password
+      );
+
+      if (user) {
+        user.email = newUserData.email;
+        user.firstname = newUserData.firstname;
+        user.lastname = newUserData.lastname;
+        user.phone = newUserData.phone;
+
+        state.loggedInUser = user;
+        state.isLoggedIn = true;
+      }
+    },
+
+    changePassword(state, action) {
+      const newUserPassword = action.payload;
+      const user = state.allUsers.find(
+        (item) =>
+          item.email ===
+            state.loggedInUser.email &&
+          item.password ===
+            state.loggedInUser.password
+      );
+
+      if (user) {
+        user.password = newUserPassword
+        state.loggedInUser = user;
+        state.isLoggedIn = true;
       }
     },
   },

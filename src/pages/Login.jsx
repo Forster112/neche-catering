@@ -60,10 +60,15 @@ const Login = () => {
           Login
         </Button>
       </FormComp>
-      <p className="account__mov text-center mb-5">
+      <p className="account__mov text-center mb-1">
         Don't have an account?{" "}
         <Link to="/register">
           <span>Create an account</span>
+        </Link>
+      </p>
+      <p className="account__mov text-center mb-5">
+        <Link to="/forgot_password">
+          Forgot password?{" "}
         </Link>
       </p>
     </div>

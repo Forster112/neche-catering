@@ -13,6 +13,9 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import About from "../pages/About";
+import ForgotPassword from "../pages/ForgotPassword";
+import EditAcctDetails from "../pages/EditAcctDetails";
+import ChangePassword from "../pages/ChangePassword";
 
 const Routers = () => {
   return (
@@ -43,9 +46,18 @@ const Routers = () => {
         path="/register"
         element={<Register />}
       />
+      <Route path="/about" element={<About />} />
       <Route
-        path="/about"
-        element={<About />}
+        path="/forgot_password"
+        element={<ForgotPassword />}
+      />
+      <Route
+        path="/edit_details"
+        element={<EditAcctDetails />}
+      />
+      <Route
+        path="/change_password"
+        element={<ChangePassword />}
       />
     </Routes>
   );
