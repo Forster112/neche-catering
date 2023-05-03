@@ -20,3 +20,9 @@
 .choose-us__title i{
   color: #ff2626;
 }
+
+@media only screen and (max-width: 800px) {
+  .whyus__row{
+    flex-direction: column-reverse;
+  }
+}

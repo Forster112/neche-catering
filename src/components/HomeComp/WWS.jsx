@@ -51,7 +51,7 @@ const WWS = () => {
               md="6"
               sm="6"
               key={i}
-              className="mt-5"
+              className="mt-5 justify-content-center"
             >
               <div className="wws__content text-center px-4 py-3">
                 <img

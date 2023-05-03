@@ -9,7 +9,7 @@ const Testimonial = () => {
   return (
     <Container>
       <Row>
-        <Col lg="6" md="12" sm="12">
+        <Col lg="6" md="12" sm="12" className="slider__wrap">
           <h3 className="testimonial__title mb-4">
             Testimonial
           </h3>

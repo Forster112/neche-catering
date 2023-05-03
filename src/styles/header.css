@@ -12,7 +12,7 @@ header{
 .logo{
   flex-direction: column;
   text-align: center;
-  width: 10%;
+  width: 6rem;
   cursor: pointer;
   margin-top: -30px;
 }
@@ -45,9 +45,14 @@ header{
   cursor: pointer;
 }
 
-.cart i, .user i{
+.cart i, .user i, .mobile__menu__icon i{
   font-size: 1.2rem;
   color: #33548A;
+}
+
+.mobile__menu__icon{
+  display: none;
+  cursor: pointer;
 }
 
 .cart span{
@@ -77,4 +82,40 @@ header{
   background: #fff;
   z-index: 88888;
   box-sizing: 5px 5px 15px -5px #EAEDF3;
+}
+
+@media only screen and (max-width: 990px) {
+  .mobile__menu__icon{
+    display: block;
+  }
+
+  .navigate{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #000d2225;
+    z-index: 9999999;
+  }
+
+  .left__navbar{
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background: #EAEDF3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 20px;
+    width: 50%;
+    height: 100%;
+    /* gap: 3rem !important; */
+    z-index: 100;
+  }
+
+  .show__menu{
+    display: block;
+  }
 }

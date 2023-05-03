@@ -13,7 +13,7 @@ import '../../styles/whyus.css'
 const WhyUs = () => {
   return (
     <Container>
-      <Row>
+      <Row className="whyus__row">
         <Col lg="6" md="12" sm="12">
           <img src={happychef} alt="happychef" />
         </Col>

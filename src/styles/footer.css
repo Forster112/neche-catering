@@ -46,3 +46,13 @@ footer {
 .social__contacts-item:hover a{
   color: #ff2626;
 }
+
+@media only screen and (max-width: 800px) {
+  .footer__contact{
+    margin-top: 20px;
+  }
+
+  .footer__about-chef{
+    margin-top: 20px;
+  }
+}

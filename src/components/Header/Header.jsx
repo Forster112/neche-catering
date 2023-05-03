@@ -1,11 +1,8 @@
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import {
-  useDispatch,
-  useSelector,
-} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../../styles/header.css";
 import logo from "../../assets/images/logo.png";
@@ -28,7 +25,11 @@ const Header = () => {
     (state) => state.userSlice.isLoggedIn
   );
 
-  console.log(userLoggedIn);
+  const menuRef = useRef(null);
+
+  function toggleMenu() {
+    menuRef.current.classList.toggle("show__menu");
+  }
 
   const nav_links = [
     {
@@ -55,13 +56,9 @@ const Header = () => {
         document.body.scrollTop > 80 ||
         document.documentElement.scrollTop > 80
       ) {
-        headerRef.current?.classList?.add(
-          "header__fix"
-        );
+        headerRef.current?.classList?.add("header__fix");
       } else {
-        headerRef.current?.classList?.remove(
-          "header__fix"
-        );
+        headerRef.current?.classList?.remove("header__fix");
       }
     });
     return () => {
@@ -78,16 +75,18 @@ const Header = () => {
           </Link>
           <h5>neche catering</h5>
         </div>
-        <div className="navigate">
+        <div
+          className="navigate"
+          ref={menuRef}
+          onClick={toggleMenu}
+        >
           <div className="left__navbar d-flex align-items-center gap-5">
             {nav_links.map((item, i) => (
               <NavLink
                 to={item.path}
                 key={i}
                 className={(navClass) =>
-                  navClass.isActive
-                    ? "active__nav"
-                    : ""
+                  navClass.isActive ? "active__nav" : ""
                 }
               >
                 {item.display}
@@ -97,10 +96,7 @@ const Header = () => {
         </div>
 
         <div className="right__navbar d-flex gap-5">
-          <span
-            className="cart"
-            onClick={toggleCart}
-          >
+          <span className="cart" onClick={toggleCart}>
             <i className="ri-shopping-basket-fill"></i>
             <span>{productsTotalQuantity}</span>
           </span>
@@ -108,6 +104,12 @@ const Header = () => {
             <Link to={userLoggedIn ? "/profile" : "/login"}>
               <i className="ri-user-fill"></i>
             </Link>
+          </span>
+          <span
+            className="mobile__menu__icon"
+            onClick={toggleMenu}
+          >
+            <i className="ri-menu-fill"></i>
           </span>
         </div>
       </div>

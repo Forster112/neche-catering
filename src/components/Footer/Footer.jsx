@@ -14,8 +14,8 @@ import { IconWrap } from "../StyledComponents/StyledComponents";
 const Footer = () => {
   return (
     <footer className="footer">
-      <Row>
-        <Col lg="3" md="4" sm="6">
+      <Row className="">
+        <Col lg="3" md="6" sm="6">
           <div className="footer_info text-start">
             <img src={logo} alt="logo" />
             <h5>neche catering</h5>
@@ -27,7 +27,7 @@ const Footer = () => {
             </p>
           </div>
         </Col>
-        <Col lg="3" md="4" sm="6">
+        <Col lg="3" md="6" sm="6">
           <div className="opening__hours">
             <h5>Opening hours</h5>
             <ListGroup>
@@ -42,7 +42,7 @@ const Footer = () => {
             </ListGroup>
           </div>
         </Col>
-        <Col lg="3" md="4" sm="6">
+        <Col lg="3" md="6" sm="6">
           <div className="footer__contact">
             <h5>Contact</h5>
             <ListGroup>
@@ -93,8 +93,8 @@ const Footer = () => {
             </ListGroup>
           </div>
         </Col>
-        <Col lg="3" md="4" sm="6">
-          <div>
+        <Col lg="3" md="6" sm="6">
+          <div className="footer__about-chef">
             <h5>About the Chef</h5>
             <p>
               Name: <br />

@@ -1,15 +1,33 @@
 import React from "react";
+import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import {
+  useSelector,
+  useDispatch,
+} from "react-redux";
+import { userActions } from "../../store/users/usersSlice";
 
 import "../../styles/profile.css";
 
 const UserDetails = () => {
+  const [showPrompt, setShowPrompt] =
+    useState(false);
+
   const users = useSelector(
     (state) => state.userSlice.loggedInUser
   );
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function closeAccount() {
+    dispatch(userActions.deleteUser(users.email));
+    setTimeout(() => {
+      navigate("/home");
+    }, 100);
+  }
 
   return (
     <div className="user__details__wrapper">
@@ -41,16 +59,46 @@ const UserDetails = () => {
             Change password
           </div>
         </Link>
-        <div className="profile__settings d-flex gap-3 two red-zone">
+        <div
+          className="profile__settings d-flex gap-3 two red-zone"
+          onClick={() =>
+            setShowPrompt(!showPrompt)
+          }
+        >
           Close account
         </div>
       </div>
-      <div className="confirm__overlay">
+      <div
+        className={
+          showPrompt
+            ? "confirm__overlay showDiv"
+            : "confirm__overlay"
+        }
+      >
         <div className="confirmPrompt">
           Are you sure?{" "}
-          <div>
-            <span>Yes</span>
-            <span>No</span>
+          <div className="confirm__separator"></div>
+          <p>
+            This action will automatically delete
+            your account and data permanently and
+            this action can't be reversed
+          </p>
+          <div className="option">
+            <span
+              onClick={() => {
+                closeAccount();
+                setShowPrompt(!showPrompt);
+              }}
+            >
+              Yes
+            </span>
+            <span
+              onClick={() =>
+                setShowPrompt(!showPrompt)
+              }
+            >
+              No
+            </span>
           </div>
         </div>
       </div>

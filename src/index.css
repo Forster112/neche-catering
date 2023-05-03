@@ -14,12 +14,12 @@ a {
 
 body {
   font-family: "Istok Web", sans-serif;
-  background: #EAEDF3;
+  background: #eaedf3;
   overflow-x: hidden;
 }
 
-section{
-  margin: 100px 110px;
+section {
+  margin-bottom: 100px;
 }
 
 p {
@@ -33,7 +33,7 @@ h4,
 h5,
 h6 {
   font-family: "RocknRoll One", sans-serif !important;
-  color: #33548A;
+  color: #33548a;
 }
 
 h1,
