@@ -1,0 +1,60 @@
+.user__details__wrapper {
+  position: relative;
+}
+
+.user__details-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #ffffff;
+  width: 60%;
+  padding: 20px 25px;
+  border-radius: 5px;
+}
+
+.user__details-div p {
+  margin-bottom: 0;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.user__details-div span {
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+.profile__settings {
+  padding: 10px;
+  width: 70%;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+.one {
+  border-radius: 0;
+}
+
+.two {
+  border-radius: 0 0 5px 5px;
+}
+
+.profile__settings:hover {
+  background-color: #d5d8de;
+}
+
+.red-zone {
+  margin-top: -20px;
+  color: #ff2626;
+}
+
+@media only screen and (max-width: 990px) {
+  .user__details-div{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .user__details-div{
+    width: 88%;
+  }
+}

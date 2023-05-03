@@ -1,4 +1,4 @@
-.home__intro{
+.home__intro {
   margin-top: 90px;
 }
 
@@ -6,78 +6,140 @@
   flex-direction: column;
 } */
 
-.intro__col h1{
+.intro__col h1 {
   font-size: 1.5rem;
 }
 
-.intro__col h5{
+.intro__col h5 {
   font-size: 3rem;
 }
 
-.intro__col h5 span{
+.intro__col h5 span {
   color: #ff2626;
 }
 
-.intro__col p{
-  color: #789DC9;
+.intro__col p {
+  color: #789dc9;
   line-height: 20px;
 }
 
-.img__col{
+.img__col {
   margin-left: 110px !important;
 }
 
-.img__col img{
+.img__col img {
   height: 400px;
   width: 400px;
 }
 
-.vector__images{
+.vector__images {
   width: 70px;
 }
 
-.vector__images2{
+.vector__images2 {
   width: 50px;
 }
 
-.wws__section{
+.wws__section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.popular__deserts__header{
+.popular__deserts__header {
   font-size: 2rem;
 }
 
-.popular__deserts__btn__wrap{
+.popular__deserts__btn__wrap {
   width: 100%;
   height: 80px;
-  background: #33548A;
+  gap: 3rem;
+  background: #33548a;
   border-radius: 5px;
 }
 
-.activebtn{
+.activebtn {
   background: #eaedf3 !important;
-  color: #33548A !important;
+  color: #33548a !important;
 }
 
-.product__image{
+.product__image {
   width: 80px;
   height: 60px;
 }
 
 @media only screen and (max-width: 800px) {
-  .img__col{
+  .img__col {
     margin-left: 0 !important;
     margin-top: 100px;
   }
 
-  .service__image{
+  .service__image {
     margin-bottom: 30px;
   }
 
-  .slider__wrap{
+  .slider__wrap {
     margin-bottom: 80px;
   }
+}
+
+@media only screen and (max-width: 576px) {
+  .intro__col {
+    text-align: center;
+    font-size: 0.7rem;
+  }
+
+  .intro__col h1 {
+    font-size: 1.1rem;
+  }
+
+  .intro__col h5 {
+    font-size: 1.8rem;
+  }
+
+  .intro__btns {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro__btns button {
+    width: 100px;
+    font-size: 0.8rem;
+  }
+
+  .methods {
+    justify-content: space-around;
+    gap: 20px !important;
+  }
+
+  .to__service span {
+    font-size: 0.8rem;
+  }
+
+  .popular__deserts__header {
+    font-size: 1.4rem;
+  }
+
+  .popular__deserts__btn__wrap {
+    gap: 1rem !important;
+  }
+
+  .popular__deserts__btn__wrap button {
+    width: 60px;
+    font-size: 0.7rem;
+  }
+
+  .product__image {
+    width: 60px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .vector__images {
+  width: 60px;
+}
+
+.vector__images2 {
+  width: 40px;
+}
 }

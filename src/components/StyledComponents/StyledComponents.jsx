@@ -49,6 +49,11 @@ export const IconWrap = styled.div`
   cursor: ${(props) =>
     props.$primary ? "pointer" : "default"};
   transition: 0.3s;
+
+  @media only screen and (max-width: 400px) {
+    width: ${(props) => (props.$icon ? "50px" : null)};
+    height: ${(props) => (props.$icon ? "50px" : null)};
+  }
 `;
 
 export const ServiceWrap = styled.div`
@@ -68,9 +73,7 @@ export const ServiceWrap = styled.div`
 
   &:hover {
     transform: ${(props) =>
-      props.$primary
-        ? "translateY(-10px)"
-        : "none"};
+      props.$primary ? "translateY(-10px)" : "none"};
   }
 `;
 
@@ -92,7 +95,7 @@ export const DeliveryStatus = styled.span`
     if (props.stats === "$green") return "#06952c";
     if (props.stats === "$red") return "red";
     if (props.stats === "$yellow") return "yellow";
-}};
+  }};
   color: #000000;
   padding: 3px;
   border-radius: 5px;

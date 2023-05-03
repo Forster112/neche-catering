@@ -1,28 +1,50 @@
-.whyus__title{
+.whyus__title {
   font-weight: 500;
   font-size: 2rem;
   color: #ff2626;
 }
 
-.whyus__title span{
-  color: #33548A;
+.whyus__title span {
+  color: #33548a;
 }
 
-.choose-us__desc{
-  color: #789DC9;
+.choose-us__desc {
+  color: #789dc9;
 }
 
-.choose-us__title{
+.choose-us__title {
   color: #000000;
   font-weight: 600;
 }
 
-.choose-us__title i{
+.choose-us__title i {
   color: #ff2626;
 }
 
 @media only screen and (max-width: 800px) {
-  .whyus__row{
+  .whyus__row {
     flex-direction: column-reverse;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .whyus__title {
+    font-size: 1.5rem;
+  }
+
+  .whyus__img img {
+    width: 350px;
+  }
+
+  .choose-us__desc {
+    font-size: 0.9rem;
+  }
+
+  .choose-us__title {
+    font-size: 0.9rem;
+  }
+
+  .choose-us__desc {
+    font-size: 0.7rem;
   }
 }

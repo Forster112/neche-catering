@@ -15,7 +15,7 @@ a {
 body {
   font-family: "Istok Web", sans-serif;
   background: #eaedf3;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 section {
@@ -40,4 +40,10 @@ h1,
 h2 {
   font-weight: 600;
   font-size: 2.1rem;
+}
+
+@media only screen and (max-width: 9px) {
+  h1,h2{
+    font-size: 1.5rem;
+  }
 }

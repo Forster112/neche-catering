@@ -7,14 +7,14 @@ header{
 
 .nav{
   height: 100%;
+  width: 100%;
 }
 
 .logo{
-  flex-direction: column;
   text-align: center;
-  width: 6rem;
+  width: 6.4rem;
   cursor: pointer;
-  margin-top: -30px;
+  margin-top: -50px;
 }
 
 .logo img{
@@ -85,6 +85,9 @@ header{
 }
 
 @media only screen and (max-width: 990px) {
+  header{
+    padding: 0 100px;
+  }
   .mobile__menu__icon{
     display: block;
   }
@@ -117,5 +120,11 @@ header{
 
   .show__menu{
     display: block;
+  }
+}
+
+@media only screen and (max-width: 575px){
+  header{
+    padding: 20px;
   }
 }

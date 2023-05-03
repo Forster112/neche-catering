@@ -29,18 +29,19 @@ import WhyUs from "../components/HomeComp/WhyUs";
 import Testimonial from "../components/HomeComp/Testimonial";
 
 const Home = () => {
-  const [activeBtn, setActiveBtn] =
-    useState("ALL");
+  const [activeBtn, setActiveBtn] = useState("ALL");
 
   const dispatch = useDispatch();
 
   function addItem(item) {
-    dispatch(cartActions.addItem({
-      title: item.title,
-      quantity: 1,
-      price: item.price,
-      description: item.desc,
-    }))
+    dispatch(
+      cartActions.addItem({
+        title: item.title,
+        quantity: 1,
+        price: item.price,
+        description: item.desc,
+      })
+    );
   }
 
   return (
@@ -52,8 +53,7 @@ const Home = () => {
             <Col sm="12" md="12" lg="6">
               <div className="intro__col d-flex flex-column gap-2">
                 <h1>
-                  Easy way to get your cakes and
-                  pasteries
+                  Easy way to get your cakes and pasteries
                 </h1>
                 <h5>
                   Need <span>deserts?</span>
@@ -61,9 +61,8 @@ const Home = () => {
                   <span>covered</span>
                 </h5>
                 <p>
-                  We deliver all kind of cakes and
-                  pasteries for your events,
-                  birthdays and personal
+                  We deliver all kind of cakes and pasteries
+                  for your events, birthdays and personal
                   consumption
                 </p>
                 <div className="intro__btns d-flex gap-5">
@@ -84,7 +83,7 @@ const Home = () => {
                 </div>
                 <div className="methods mt-4 d-flex gap-5">
                   <span className="d-flex align-items-center gap-3">
-                    <IconWrap>
+                    <IconWrap className="iconwrap">
                       <i className="ri-store-2-line"></i>
                     </IconWrap>
                     bakery pickup
@@ -100,21 +99,19 @@ const Home = () => {
             </Col>
             <Col sm="12" md="12" lg="6">
               <div className="img__col d-flex align-items-center justify-content-center">
-                <img
-                  src={baking}
-                  alt="chef image"
-                />
+                <img src={baking} alt="chef image" />
               </div>
             </Col>
           </Row>
         </section>
         {/* Service Image section */}
-        <section className="">
+        <section className="to__service">
           <Row>
             <Col
               lg="3"
               md="6"
               sm="6"
+              xs="6"
               className="service__image"
             >
               <Link to="/foods">
@@ -122,16 +119,16 @@ const Home = () => {
                   $primary
                   onClick={() =>
                     dispatch(
-                      desertTypeActions.changeType(
-                        "CAKES"
-                      )
+                      desertTypeActions.changeType("CAKES")
                     )
                   }
                 >
                   <IconWrap
+                    className="iconwrap"
                     width="70px"
                     height="70px"
                     $primary
+                    $icon
                   >
                     <img
                       src={cake}
@@ -147,6 +144,7 @@ const Home = () => {
               lg="3"
               md="6"
               sm="6"
+              xs="6"
               className="service__image"
             >
               <Link to="/foods">
@@ -161,9 +159,11 @@ const Home = () => {
                   }
                 >
                   <IconWrap
+                    className="iconwrap"
                     width="70px"
                     height="70px"
                     $primary
+                    $icon
                   >
                     <img
                       src={cupcake}
@@ -179,6 +179,7 @@ const Home = () => {
               lg="3"
               md="6"
               sm="6"
+              xs="6"
               className="service__image"
             >
               <Link to="/foods">
@@ -193,9 +194,11 @@ const Home = () => {
                   }
                 >
                   <IconWrap
+                    className="iconwrap"
                     width="70px"
                     height="70px"
                     $primary
+                    $icon
                   >
                     <img
                       src={smallchops}
@@ -207,7 +210,7 @@ const Home = () => {
                 </ServiceWrap>
               </Link>
             </Col>
-            <Col lg="3" md="6" sm="6">
+            <Col lg="3" md="6" sm="6" xs="6">
               <Link to="/foods">
                 <ServiceWrap
                   $primary
@@ -220,9 +223,11 @@ const Home = () => {
                   }
                 >
                   <IconWrap
+                    className="iconwrap"
                     width="70px"
                     height="70px"
                     $primary
+                    $icon
                   >
                     <img
                       src={perfait}
@@ -254,23 +259,14 @@ const Home = () => {
                   Popular Deserts
                 </h5>
               </Col>
-              <Col
-                lg="12"
-                md="12"
-                sm="12"
-                className="mb-5"
-              >
-                <div className="popular__deserts__btn__wrap d-flex align-items-center justify-content-center gap-5">
+              <Col lg="12" md="12" sm="12" className="mb-5">
+                <div className="popular__deserts__btn__wrap d-flex align-items-center justify-content-center">
                   <PopularBtn
                     width="70px"
                     className={
-                      activeBtn === "ALL"
-                        ? "activebtn"
-                        : ""
+                      activeBtn === "ALL" ? "activebtn" : ""
                     }
-                    onClick={() =>
-                      setActiveBtn("ALL")
-                    }
+                    onClick={() => setActiveBtn("ALL")}
                   >
                     All
                   </PopularBtn>
@@ -280,9 +276,7 @@ const Home = () => {
                         ? "activebtn"
                         : ""
                     }
-                    onClick={() =>
-                      setActiveBtn("CAKES")
-                    }
+                    onClick={() => setActiveBtn("CAKES")}
                   >
                     Cakes
                   </PopularBtn>
@@ -292,9 +286,7 @@ const Home = () => {
                         ? "activebtn"
                         : ""
                     }
-                    onClick={() =>
-                      setActiveBtn("CUPCAKES")
-                    }
+                    onClick={() => setActiveBtn("CUPCAKES")}
                   >
                     Cupcakes
                   </PopularBtn>
@@ -317,50 +309,39 @@ const Home = () => {
                         ? "activebtn"
                         : ""
                     }
-                    onClick={() =>
-                      setActiveBtn("PERFAITS")
-                    }
+                    onClick={() => setActiveBtn("PERFAITS")}
                   >
                     Perfaits
                   </PopularBtn>
                 </div>
               </Col>
-              {activeDesert(activeBtn).map(
-                (item, i) => (
-                  <Col
-                    lg="3"
-                    md="6"
-                    sm="12"
-                    key={i}
-                  >
-                    <ProductCard>
-                      <img
-                        src={item.image}
-                        alt="product"
-                        className="product__image mb-2"
-                      />
-                      <h5 className="text-center">
-                        {item.title}
-                      </h5>
-                      <p className="product__desc-text text-center">
-                        {item.desc}
-                      </p>
-                      <div className="d-flex justify-content-between align-items-center gap-5">
-                        <span>₦{item.price}</span>
-                        <Button
-                          $primary
-                          width="100px"
-                          onClick={() =>
-                            addItem(item)
-                          }
-                        >
-                          Add to Cart
-                        </Button>
-                      </div>
-                    </ProductCard>
-                  </Col>
-                )
-              )}
+              {activeDesert(activeBtn).map((item, i) => (
+                <Col lg="3" md="6" sm="12" key={i}>
+                  <ProductCard className="product__card">
+                    <img
+                      src={item.image}
+                      alt="product"
+                      className="product__image mb-2"
+                    />
+                    <h5 className="text-center">
+                      {item.title}
+                    </h5>
+                    <p className="product__desc-text text-center">
+                      {item.desc}
+                    </p>
+                    <div className="d-flex justify-content-between align-items-center gap-5">
+                      <span>₦{item.price}</span>
+                      <Button
+                        $primary
+                        width="100px"
+                        onClick={() => addItem(item)}
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </ProductCard>
+                </Col>
+              ))}
             </Row>
           </Container>
         </section>

@@ -25,50 +25,46 @@ const WWS = () => {
     },
   ];
   return (
-    <>
-      <Container>
-        <Row>
-          <Col lg="12">
-            <div className="wws__intro text-center">
-              <h5>What we serve</h5>
-              <p className="wws__intro-para">
-                Just sit back <br /> we will{" "}
-                <span>take care</span> of it
-              </p>
-              <p className="wws__desc">
-                Deserts for your wedding,
-                birthday, personal consumption and
-                other events made available on
-                time. <br /> Pick them up at the
-                bakery or have them delivered at
-                your door step
-              </p>
+    <Container>
+      <Row>
+        <Col lg="12">
+          <div className="wws__intro text-center">
+            <h5>What we serve</h5>
+            <p className="wws__intro-para">
+              Just sit back <br /> we will{" "}
+              <span>take care</span> of it
+            </p>
+            <p className="wws__desc">
+              Deserts for your wedding, birthday, personal
+              consumption and other events made available on
+              time. <br /> Pick them up at the bakery or
+              have them delivered at your door step
+            </p>
+          </div>
+        </Col>
+        {wwsDetail.map((item, i) => (
+          <Col
+            lg="4"
+            md="6"
+            sm="6"
+            key={i}
+            className="mt-5 justify-content-center"
+          >
+            <div className="wws__content text-center px-4 py-3">
+              <img
+                src={item.image}
+                alt="delivery"
+                className="wws-content-image"
+              />
+              <h5 className="fw-bold mb-3">
+                {item.header}
+              </h5>
+              <p>{item.desc}</p>
             </div>
           </Col>
-          {wwsDetail.map((item, i) => (
-            <Col
-              lg="4"
-              md="6"
-              sm="6"
-              key={i}
-              className="mt-5 justify-content-center"
-            >
-              <div className="wws__content text-center px-4 py-3">
-                <img
-                  src={item.image}
-                  alt="delivery"
-                  className="wws-content-image"
-                />
-                <h5 className="fw-bold mb-3">
-                  {item.header}
-                </h5>
-                <p>{item.desc}</p>
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

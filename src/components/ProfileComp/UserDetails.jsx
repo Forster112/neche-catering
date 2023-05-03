@@ -10,6 +10,7 @@ import {
 import { userActions } from "../../store/users/usersSlice";
 
 import "../../styles/profile.css";
+import "../../styles/userdetails.css";
 
 const UserDetails = () => {
   const [showPrompt, setShowPrompt] =

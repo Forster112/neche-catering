@@ -31,3 +31,21 @@
 .review__image{
   width: 80px;
 }
+
+@media only screen and (max-width: 575px){
+  .testimonial__intro{
+    font-size: 1.5rem;
+  }
+
+  .testimonial__desc{
+    font-size: 0.9rem;
+  }
+
+  .review__text{
+    font-size: 0.8rem;
+  }
+
+  .testimonial__img img{
+    width: 350px;
+  }
+}

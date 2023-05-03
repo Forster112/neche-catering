@@ -66,7 +66,7 @@ const Profile = () => {
                 setActiveUserDetail("order")
               }
             >
-              <i class="ri-archive-line"></i>
+              <i className="ri-archive-line"></i>
               <span>Orders</span>
             </div>
             <div

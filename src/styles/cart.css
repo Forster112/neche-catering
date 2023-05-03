@@ -1,4 +1,4 @@
-.cartOverlay{
+.cartOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,28 +8,28 @@
   z-index: 99999;
 }
 
-.cartWrap{
+.cartWrap {
   position: absolute;
   top: 0;
   right: 0;
   width: 30%;
   height: 100%;
-  background: #EAEDF3;
+  background: #eaedf3;
   z-index: 999999;
 }
 
-.close-icon__wrap{
+.close-icon__wrap {
   width: 100%;
   height: 50px;
   padding: 10px 20px;
 }
 
-.close-icon__wrap i{
+.close-icon__wrap i {
   font-size: 1.9rem;
   cursor: pointer;
 }
 
-.checkout__div_wrap{
+.checkout__div_wrap {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -39,21 +39,51 @@
   justify-content: space-between;
   width: 100%;
   height: 100px;
-  background-color: #33548A;
-  color: #EAEDF3;
+  background-color: #33548a;
+  color: #eaedf3;
   font-size: 1.15rem;
   font-family: "Istok Web", sans-serif;
 }
 
-.cart_cartItems-wrap{
+.cart_cartItems-wrap {
   margin-top: 2rem;
   padding: 0 19px;
   height: 70%;
   overflow-y: auto;
 }
 
-.cart_cartItems-wrap .initial_message{
+.cart_cartItems-wrap .initial_message {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 800px) {
+  .cartWrap {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .cartWrap {
+    width: 65%;
+  }
+
+  .close-icon__wrap i {
+    font-size: 1.5rem;
+  }
+
+  .checkout__div_wrap{
+    font-size: 0.9rem;
+  }
+
+  .checkout__div_wrap button{
+    width: 90px;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  .cartWrap {
+    width: 70%;
+  }
 }

@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <header ref={headerRef} className="header">
       <div className="nav d-flex align-items-center justify-content-between">
-        <div className="logo d-flex align-items-center gap-4">
+        <div className="logo d-flex align-items-center flex-column gap-4">
           <Link to="/home">
             <img src={logo} alt="logo" />
           </Link>
