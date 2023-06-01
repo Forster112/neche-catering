@@ -18,3 +18,9 @@
   outline: none;
   resize: none;
 }
+
+@media only screen and (max-width: 565px) {
+  .contact__inputs input, .contact__inputs textarea{
+    width: 90%;
+  }
+}

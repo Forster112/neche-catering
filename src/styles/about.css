@@ -5,10 +5,12 @@
   gap: 25px;
   background: #add0ef;
   padding: 2rem;
+  width: 100%;
   margin-bottom: 100px;
 }
 
-.about h6, .about__intro h6{
+.about h6,
+.about__intro h6 {
   font-size: 1.5rem;
 }
 
@@ -19,58 +21,91 @@
   font-size: 1.1rem;
 }
 
-.about p{
+.about p {
   line-height: 1.8rem;
   text-align: justify;
   font-size: 1rem;
 }
 
-.about__background-image{
+.about__background-image {
   height: 230px;
 }
 
-.about__chef-image{
+.about__chef-image {
   height: 330px;
   width: 420px;
 }
 
-.about__contact-image{
+.about__contact-image {
   width: 250px;
 }
 
-.contact__details-div{
+.contact__details-div {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.contact__details-div span{
+.contact__details-div span {
   font-size: 1.2rem;
 }
 
-.contact__details-div span i{
+.contact__details-div span i {
   margin-right: 20px;
   font-weight: 600;
 }
 
-.newsletter{
+.newsletter {
   margin: 5px 0 -8px 0 !important;
   font-weight: 600 !important;
   font-size: 1.2rem !important;
 }
 
-.newsletter__wrap{
+.newsletter__wrap {
   padding: 7px;
-  border: 1px solid #33548A;
+  border: 1px solid #33548a;
   width: fit-content;
   border-radius: 5px;
   margin-top: 0;
 }
 
-.newsletter__wrap input{
+.newsletter__wrap input {
   border: none;
   padding: 5px;
   font-size: 1.1rem;
   width: 19rem;
   outline: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .about h6,
+  .about__intro h6 {
+    font-size: 1.1rem;
+  }
+
+  .about__intro p {
+    width: 450px;
+    font-size: 0.9rem;
+  }
+
+  .about p {
+    line-height: 1.8rem;
+    font-size: 0.85rem;
+  }
+
+  .about__contact-row, .about__chef-row{
+    flex-direction: column-reverse;
+  }
+
+}
+
+@media only screen and (max-width: 565px) {
+
+  .about__intro p {
+    width: 400px;
+  }
+
+  .newsletter__wrap input{
+    width: 17rem;
+  }
 }

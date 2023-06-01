@@ -2,10 +2,6 @@
   margin-top: 90px;
 }
 
-/* .intro__col{
-  flex-direction: column;
-} */
-
 .intro__col h1 {
   font-size: 1.5rem;
 }
@@ -97,6 +93,11 @@
     font-size: 1.8rem;
   }
 
+  .img__col img {
+    height: 300px;
+    width: 300px;
+  }
+
   .intro__btns {
     align-items: center;
     justify-content: center;
@@ -136,10 +137,10 @@
 
 @media only screen and (max-width: 400px) {
   .vector__images {
-  width: 60px;
-}
+    width: 60px;
+  }
 
-.vector__images2 {
-  width: 40px;
-}
+  .vector__images2 {
+    width: 40px;
+  }
 }

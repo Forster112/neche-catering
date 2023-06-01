@@ -43,14 +43,11 @@ const CakeForm = () => {
 
   function setUserFlavourData(e) {
     let price = 0;
-    if (e.target.value === "Vanilla")
-      price = 1000;
-    if (e.target.value === "Chocolate")
-      price = 1200;
+    if (e.target.value === "Vanilla") price = 1000;
+    if (e.target.value === "Chocolate") price = 1200;
     if (e.target.value === "Chocolate & Vanilla")
       price = 1300;
-    if (e.target.value === "Strawberry")
-      price = 1000;
+    if (e.target.value === "Strawberry") price = 1000;
     let addfp = userInputsData.pricesArr.slice();
     addfp[0] = price;
     setUserInputsData({
@@ -75,8 +72,7 @@ const CakeForm = () => {
     if (e.target.value === "Small") price = 600;
     if (e.target.value === "Medium") price = 800;
     if (e.target.value === "Large") price = 1000;
-    if (e.target.value === "Extra Large")
-      price = 1200;
+    if (e.target.value === "Extra Large") price = 1200;
 
     let addsp = userInputsData.pricesArr.slice();
     addsp[2] = price;
@@ -100,56 +96,45 @@ const CakeForm = () => {
       >
         Customize
       </Button>
-      <div className="hidden" ref={inputWrapRef}>
-        <Row className="mb-5">
-          <Col lg="4" md="6">
+      <div
+        className="users__order-div hidden"
+        ref={inputWrapRef}
+      >
+        <Row className="order__form-row mb-5">
+          <Col lg="4" md="12" sm="12">
             <select
               className="customize__foods__inputs customize__foods__input"
-              onChange={(e) =>
-                setUserFlavourData(e)
-              }
+              onChange={(e) => setUserFlavourData(e)}
             >
               <option value="Preffered flavour">
                 Preffered Flavour(s)
               </option>
-              <option value="Vanilla">
-                Vanilla
-              </option>
-              <option value="Chocolate">
-                Chocolate
-              </option>
+              <option value="Vanilla">Vanilla</option>
+              <option value="Chocolate">Chocolate</option>
               <option value="Chocolate &amp; Vanilla">
                 Chocolate &amp; Vanilla
               </option>
-              <option value="Strawberry">
-                Strawberry
-              </option>
+              <option value="Strawberry">Strawberry</option>
             </select>
           </Col>
-          <Col lg="4" md="6">
+          <Col lg="4" md="12" sm="12">
             <input
               type="number"
               placeholder="number of layers"
               className="customize__foods__inputs customize__foods__input"
-              onChange={(e) =>
-                setUserLayerNumData(e)
-              }
+              onChange={(e) => setUserLayerNumData(e)}
             />
           </Col>
-          <Col lg="4">
+          <Col lg="4" md="12" sm="12">
             <select
               className="customize__foods__inputs customize__foods__input"
-              onChange={(e) =>
-                setUserLayerSizeData(e)
-              }
+              onChange={(e) => setUserLayerSizeData(e)}
             >
               <option value="layer size">
                 layer size (smallest)
               </option>
               <option value="Small">Small</option>
-              <option value="Medium">
-                Medium
-              </option>
+              <option value="Medium">Medium</option>
               <option value="Large">Large</option>
               <option value="Extra Large">
                 Extra Large
@@ -158,7 +143,12 @@ const CakeForm = () => {
           </Col>
         </Row>
         <Row>
-          <Col lg="6">
+          <Col
+            lg="6"
+            md="12"
+            sm="12"
+            className="form__textarea-col mb-md-4"
+          >
             <textarea
               cols="50"
               rows="11"
@@ -172,7 +162,7 @@ const CakeForm = () => {
               }
             ></textarea>
           </Col>
-          <Col lg="6">
+          <Col lg="6" md="12" sm="12">
             <ProductCard
               gap="20px"
               className="userInputData"
@@ -180,33 +170,23 @@ const CakeForm = () => {
               <h5>Choices</h5>
               <p>
                 Flavour:{" "}
-                <span>
-                  {userInputsData.flavour}
-                </span>
+                <span>{userInputsData.flavour}</span>
               </p>
               <p>
                 Number of Layers:{" "}
                 <span>
-                  {
-                    userInputsData[
-                      "number of layers"
-                    ]
-                  }
+                  {userInputsData["number of layers"]}
                 </span>
               </p>
               <p>
                 Layer size:{" "}
-                <span>
-                  {userInputsData["layer size"]}
-                </span>
+                <span>{userInputsData["layer size"]}</span>
               </p>
               <p>
                 Other desc:{" "}
-                <span>
-                  {userInputsData.descriptions}
-                </span>
+                <span>{userInputsData.descriptions}</span>
               </p>
-              <div className="d-flex align-items-center justify-content-between w-50">
+              <div className="userInputedTotalPriceNbtn d-flex align-items-center justify-content-between">
                 <span>
                   ₦{" "}
                   {userInputsData.pricesArr.reduce(
@@ -214,10 +194,7 @@ const CakeForm = () => {
                     0
                   )}
                 </span>
-                <Button
-                  $primary
-                  onClick={addItem}
-                >
+                <Button $primary onClick={addItem}>
                   add to cart
                 </Button>
               </div>

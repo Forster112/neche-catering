@@ -18,11 +18,11 @@ export const Button = styled.button`
       props.$primary ? "#EAEDF3" : "#33548A"};
   }
 
-  font-size: ${(props) => props["font-size"]};
+  font-size: ${(props) => props["font-size"] || "1rem"};
   padding: 7px 2px;
   border: 2px solid #33548a;
   border-radius: 5px;
-  width: ${(props) => props.width};
+  width: ${(props) => props.width || "125px"};
   transition: 0.2s;
 `;
 
@@ -32,8 +32,8 @@ export const PopularBtn = styled.button`
   font-size: 1.05rem;
   padding: 2px;
   border: none;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => props.width || "85px"};
+  height: ${(props) => props.height || "40px"};
   border-radius: 5px;
 `;
 
@@ -41,9 +41,9 @@ export const IconWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${(props) => props.background};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  background: ${(props) => props.background || "#ff2626"};
+  width: ${(props) => props.width || "30px"};
+  height: ${(props) => props.height || "30px"};
   padding: 2px;
   border-radius: 50%;
   cursor: ${(props) =>
@@ -67,7 +67,7 @@ export const ServiceWrap = styled.div`
   color: #000;
   border-radius: 5px;
   transition: 0.3s;
-  padding: ${(props) => props.padding};
+  padding: ${(props) => props.padding || "20px"};
   width: ${(props) => props.width};
   font-family: "RocknRoll One", sans-serif !important;
 
@@ -84,7 +84,7 @@ export const ProductCard = styled.div`
   justify-content: center;
   font-family: "Istok Web", sans-serif;
   gap: ${(props) => props.gap || "5px"};
-  padding: ${(props) => props.padding};
+  padding: ${(props) => props.padding || "20px"};
   border: 2px solid #add0ef;
   background: #eaedf3;
   margin-bottom: 30px;
@@ -100,27 +100,3 @@ export const DeliveryStatus = styled.span`
   padding: 3px;
   border-radius: 5px;
 `;
-
-Button.defaultProps = {
-  width: "125px",
-  "font-size": "1rem",
-};
-
-IconWrap.defaultProps = {
-  width: "30px",
-  height: "30px",
-  background: "#ff2626",
-};
-
-PopularBtn.defaultProps = {
-  width: "85px",
-  height: "40px",
-};
-
-ProductCard.defaultProps = {
-  padding: "20px",
-};
-
-ServiceWrap.defaultProps = {
-  padding: "20px",
-};

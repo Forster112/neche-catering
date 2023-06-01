@@ -67,7 +67,7 @@
   transition: 0.5s;
 }
 
-.show:nth-child(2){
+.show:nth-child(2) {
   transition-delay: 500ms;
 }
 
@@ -92,5 +92,56 @@
 .userInputData p span {
   font-weight: 600;
   margin-left: 1rem;
-  color: #33548A;
+  color: #33548a;
+}
+
+.userInputedTotalPriceNbtn{
+  width: 50%;
+}
+
+@media only screen and (max-width: 990px) {
+  .customize__foods__inputs {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .foods__order-col {
+    margin: 0 1rem;
+    align-items: center;
+  }
+
+  .order__form-row {
+    gap: 1rem;
+  }
+
+  .form__textarea-col {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 565px) {
+  .customize__foods__inputs {
+    margin-bottom: 20px;
+  }
+
+  .foods__title {
+    font-size: 1.4rem;
+  }
+
+  .foods__intro {
+    font-size: 1.1rem;
+  }
+
+  .userInputData{
+    gap: 10px !important;
+  }
+
+  .userInputData p{
+    width: 300px;
+  }
+
+  .userInputedTotalPriceNbtn{
+    width: 75%;
+  }
 }

@@ -87,28 +87,18 @@ const SnacksForm = () => {
 
   return (
     <div>
-      <p
-        className="foods__intro"
-        ref={snacksTaskRef}
-      >
+      <p className="foods__intro" ref={snacksTaskRef}>
         click to customize your taste
       </p>
       <Button
         className="mb-5"
         onClick={(e) =>
-          showInputs(
-            e,
-            snacksTaskRef,
-            snacksInputWrapRef
-          )
+          showInputs(e, snacksTaskRef, snacksInputWrapRef)
         }
       >
         Customize
       </Button>
-      <div
-        className="hidden"
-        ref={snacksInputWrapRef}
-      >
+      <div className="hidden" ref={snacksInputWrapRef}>
         <Row className="mb-5">
           <Col lg="4" md="6">
             <select
@@ -120,9 +110,7 @@ const SnacksForm = () => {
               <option value="Small Chops">
                 Small Chops
               </option>
-              <option value="Doughnuts">
-                Doughnuts
-              </option>
+              <option value="Doughnuts">Doughnuts</option>
             </select>
           </Col>
           <Col lg="4" md="6">
@@ -156,29 +144,23 @@ const SnacksForm = () => {
             >
               <h5>Choices</h5>
               <p>
-                Type:{" "}
-                <span>{sUserInputData.type}</span>
+                Type: <span>{sUserInputData.type}</span>
               </p>
               <p>
                 Quantity:{" "}
-                <span>
-                  {sUserInputData.quantity}
-                </span>
+                <span>{sUserInputData.quantity}</span>
               </p>
               <p>
                 Other Info:{" "}
-                <span>
-                  {sUserInputData.descriptions}
-                </span>
+                <span>{sUserInputData.descriptions}</span>
               </p>
-              <div className="d-flex align-items-center justify-content-between w-50">
+              <div className="userInputedTotalPriceNbtn d-flex align-items-center justify-content-between">
                 <span>
-                  ₦ {sUserInputData.price * sUserInputData.quantity}{" "}
+                  ₦{" "}
+                  {sUserInputData.price *
+                    sUserInputData.quantity}{" "}
                 </span>
-                <Button
-                  $primary
-                  onClick={addItem}
-                >
+                <Button $primary onClick={addItem}>
                   add to cart
                 </Button>
               </div>

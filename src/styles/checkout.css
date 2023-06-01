@@ -55,3 +55,9 @@
   background-color: #33548A;
   margin-top: -10px;
 }
+
+@media only screen and (max-width: 565px) {
+  .checkout__header{
+    font-size: 2rem;
+  }
+}

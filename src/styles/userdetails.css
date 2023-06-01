@@ -47,6 +47,70 @@
   color: #ff2626;
 }
 
+.confirm__overlay{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00000062;
+}
+
+.confirmPrompt{
+  position: relative;
+  width: 40%;
+  height: 220px;
+  background: #ADD0EF;
+  color: #423d3d;
+  border: 1px solid #33548A;
+  padding: 6px;
+  border-radius: 5px;
+  top: 25%;
+  left: 30%;
+}
+
+.confirm__separator{
+  background: #0000001f;
+  width: 100%;
+  height: 4px;
+}
+
+.confirmPrompt p{
+  text-align: justify;
+  margin: 5px;
+}
+
+.confirmPrompt .option{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  background-color: #93b8d9;
+  width: 100%;
+  height: 40px;
+}
+
+.confirmPrompt div span{
+  margin-left: 0;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.confirmPrompt div span:hover{
+  background-color: #ff2626;
+}
+
+.showDiv{
+  display: block !important;
+}
+
 @media only screen and (max-width: 990px) {
   .user__details-div{
     width: 80%;
@@ -56,5 +120,23 @@
 @media only screen and (max-width: 575px) {
   .user__details-div{
     width: 88%;
+  }
+
+  .user__details-div p {
+    font-size: 0.8rem;
+  }
+
+  .profile__settings{
+    width: 100%;
+  }
+
+  .confirmPrompt{
+    width: 70%;
+    left: 0;
+    margin: auto;
+  }
+
+  .confirmPrompt p{
+    text-align: left;
   }
 }

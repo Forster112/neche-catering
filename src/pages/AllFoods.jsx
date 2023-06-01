@@ -39,20 +39,16 @@ const AllFoods = () => {
   return (
     <div>
       <Row>
-        <Col lg="2" md="3">
+        <Col lg="2" md="3" sm="12" xs="12">
           <div className="foods__category-wrap gap-4">
             <div
               onClick={() =>
                 dispatch(
-                  desertTypeActions.changeType(
-                    "CAKES"
-                  )
+                  desertTypeActions.changeType("CAKES")
                 )
               }
               className={
-                activeType === "CAKES"
-                  ? "active__kind"
-                  : ""
+                activeType === "CAKES" ? "active__kind" : ""
               }
             >
               Cakes
@@ -60,9 +56,7 @@ const AllFoods = () => {
             <div
               onClick={() =>
                 dispatch(
-                  desertTypeActions.changeType(
-                    "CUPCAKES"
-                  )
+                  desertTypeActions.changeType("CUPCAKES")
                 )
               }
               className={
@@ -76,9 +70,7 @@ const AllFoods = () => {
             <div
               onClick={() =>
                 dispatch(
-                  desertTypeActions.changeType(
-                    "PERFAITS"
-                  )
+                  desertTypeActions.changeType("PERFAITS")
                 )
               }
               className={
@@ -92,9 +84,7 @@ const AllFoods = () => {
             <div
               onClick={() =>
                 dispatch(
-                  desertTypeActions.changeType(
-                    "SMALLCHOPS"
-                  )
+                  desertTypeActions.changeType("SMALLCHOPS")
                 )
               }
               className={
@@ -107,19 +97,16 @@ const AllFoods = () => {
             </div>
           </div>
         </Col>
-        <Col className="mt-4 me-4">
+        <Col className="foods__order-col mt-4 me-lg-4">
           <Row>
             <div className="custom__desert mb-5">
               <h5 className="foods__title">
                 Welcome to the store
               </h5>
               <p className="foods__intro mb-5">
-                Customize your taste and choices
-                or Select any of our{" "}
-                <span>
-                  recent highest selling
-                </span>{" "}
-                deserts
+                Customize your taste and choices or Select
+                any of our{" "}
+                <span>recent highest selling</span> deserts
               </p>
               <div>
                 {(() => {
@@ -129,9 +116,7 @@ const AllFoods = () => {
                   if (activeType === "PERFAITS") {
                     return <PerfaitForm />;
                   }
-                  if (
-                    activeType === "SMALLCHOPS"
-                  ) {
+                  if (activeType === "SMALLCHOPS") {
                     return <SnacksForm />;
                   }
                   if (activeType === "CUPCAKES") {
@@ -142,40 +127,31 @@ const AllFoods = () => {
             </div>
           </Row>
           <Row className="mb-5">
-            {activeDesert(activeType).map(
-              (item, i) => (
-                <Col
-                  lg="3"
-                  md="6"
-                  sm="12"
-                  key={i}
-                >
-                  <ProductCard>
-                    <img
-                      src={item.image}
-                      alt="product"
-                      className="product__image mb-2"
-                    />
-                    <h5 className="text-center">
-                      {item.title}
-                    </h5>
-                    <p className="text-center">
-                      {item.desc}
-                    </p>
-                    <div className="d-flex justify-content-between align-items-center gap-5">
-                      <span>₦{item.price}</span>
-                      <Button
-                        $primary
-                        width="100px"
-                        onClick={() => addItem(item)}
-                      >
-                        Add to Cart
-                      </Button>
-                    </div>
-                  </ProductCard>
-                </Col>
-              )
-            )}
+            {activeDesert(activeType).map((item, i) => (
+              <Col lg="3" md="6" sm="12" key={i}>
+                <ProductCard>
+                  <img
+                    src={item.image}
+                    alt="product"
+                    className="product__image mb-2"
+                  />
+                  <h5 className="text-center">
+                    {item.title}
+                  </h5>
+                  <p className="text-center">{item.desc}</p>
+                  <div className="d-flex justify-content-between align-items-center gap-5">
+                    <span>₦{item.price}</span>
+                    <Button
+                      $primary
+                      width="100px"
+                      onClick={() => addItem(item)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                </ProductCard>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Row>

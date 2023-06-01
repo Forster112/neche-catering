@@ -72,28 +72,18 @@ const PerfaitForm = () => {
 
   return (
     <div>
-      <p
-        className="foods__intro"
-        ref={perfaitTaskRef}
-      >
+      <p className="foods__intro" ref={perfaitTaskRef}>
         click to customize your taste
       </p>
       <Button
         className="mb-5"
         onClick={(e) =>
-          showInputs(
-            e,
-            perfaitTaskRef,
-            perfaitInputWrapRef
-          )
+          showInputs(e, perfaitTaskRef, perfaitInputWrapRef)
         }
       >
         Customize
       </Button>
-      <div
-        className="hidden"
-        ref={perfaitInputWrapRef}
-      >
+      <div className="hidden" ref={perfaitInputWrapRef}>
         <Row className="mb-5">
           <Col lg="4" md="6">
             <select
@@ -143,21 +133,23 @@ const PerfaitForm = () => {
             >
               <h5>Choices</h5>
               <p>
-                Type:{" "}
-                <span>{pUserInputData.type}</span>
+                Type: <span>{pUserInputData.type}</span>
               </p>
               <p>
-                Size:{" "}
-                <span>{pUserInputData.size}</span>
+                Size: <span>{pUserInputData.size}</span>
               </p>
               <p>
                 Other Info:{" "}
-                <span>
-                  {pUserInputData.descriptions}
-                </span>
+                <span>{pUserInputData.descriptions}</span>
               </p>
-              <div className="d-flex align-items-center justify-content-between w-50">
-                <span>₦ {pUserInputData.pricesArr.reduce((acc, val)=> acc + val, 0)} </span>
+              <div className="userInputedTotalPriceNbtn d-flex align-items-center justify-content-between">
+                <span>
+                  ₦{" "}
+                  {pUserInputData.pricesArr.reduce(
+                    (acc, val) => acc + val,
+                    0
+                  )}{" "}
+                </span>
                 <Button $primary onClick={addItem}>
                   add to cart
                 </Button>

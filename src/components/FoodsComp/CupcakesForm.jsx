@@ -103,10 +103,7 @@ const CupcakesForm = () => {
 
   return (
     <div>
-      <p
-        className="foods__intro"
-        ref={cupcakesTaskRef}
-      >
+      <p className="foods__intro" ref={cupcakesTaskRef}>
         click to customize your taste
       </p>
       <Button
@@ -121,31 +118,18 @@ const CupcakesForm = () => {
       >
         Customize
       </Button>
-      <div
-        className="hidden"
-        ref={cupcakesInputWrapRef}
-      >
+      <div className="hidden" ref={cupcakesInputWrapRef}>
         <Row className="mb-5">
           <Col lg="4" md="6">
             <select
               className="customize__foods__inputs customize__foods__input"
               ref={cupcakeFlavourRef}
-              onChange={(e) =>
-                setcupcakesPrice1(e)
-              }
+              onChange={(e) => setcupcakesPrice1(e)}
             >
-              <option value="flavour">
-                Flavour
-              </option>
-              <option value="Chocolate">
-                Chocolate
-              </option>
-              <option value="Vanilla">
-                Vanilla
-              </option>
-              <option value="Strawberry">
-                Strawberry
-              </option>
+              <option value="flavour">Flavour</option>
+              <option value="Chocolate">Chocolate</option>
+              <option value="Vanilla">Vanilla</option>
+              <option value="Strawberry">Strawberry</option>
             </select>
           </Col>
           <Col lg="4" md="6">
@@ -153,9 +137,7 @@ const CupcakesForm = () => {
               type="number"
               placeholder="Quantity"
               className="customize__foods__inputs customize__foods__input"
-              onChange={(e) =>
-                setCupcakesPrice2(e)
-              }
+              onChange={(e) => setCupcakesPrice2(e)}
             />
           </Col>
           <Col lg="4">
@@ -182,30 +164,23 @@ const CupcakesForm = () => {
               <h5>Choices</h5>
               <p>
                 Flavour:{" "}
-                <span>
-                  {cUserInputData.flavour}
-                </span>
+                <span>{cUserInputData.flavour}</span>
               </p>
               <p>
                 Quantity:{" "}
-                <span>
-                  {cUserInputData.quantity}
-                </span>
+                <span>{cUserInputData.quantity}</span>
               </p>
               <p>
                 Other Info:{" "}
-                <span>
-                  {cUserInputData.descriptions}
-                </span>
+                <span>{cUserInputData.descriptions}</span>
               </p>
-              <div className="d-flex align-items-center justify-content-between w-50">
+              <div className="userInputedTotalPriceNbtn d-flex align-items-center justify-content-between">
                 <span>
-                  ₦ {cUserInputData.price * cUserInputData.quantity}{" "}
+                  ₦{" "}
+                  {cUserInputData.price *
+                    cUserInputData.quantity}{" "}
                 </span>
-                <Button
-                  $primary
-                  onClick={addItem}
-                >
+                <Button $primary onClick={addItem}>
                   add to cart
                 </Button>
               </div>

@@ -173,7 +173,7 @@ const Checkout = () => {
           </Col>
           <Col lg="4" md="4" sm="12">
             <ServiceWrap
-              width="370px"
+              width="350px"
               padding="35px"
             >
               <div className="checkout__total-card">

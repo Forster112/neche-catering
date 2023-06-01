@@ -21,32 +21,40 @@ const About = () => {
           ABOUT NECHE CATERING
         </h6>
         <p>
-          We offer all kinds of catering services
-          e.g cakes, snacks, small chops,
-          perfaits, and also cooking services for
-          your events
+          We offer all kinds of catering services e.g cakes,
+          snacks, small chops, perfaits, and also cooking
+          services for your events
         </p>
       </div>
       <Container className="about">
         <Row className="mb-5 align-items-center">
-          <Col className="about__background-intro">
+          <Col
+            lg="6"
+            md="6"
+            sm="12"
+            xs="12"
+            className="about__background-intro"
+          >
             <h6>BACKGROUND</h6>
             <p>
-              Lorem ipsum dolor, sit amet
-              consectetur adipisicing elit. Nihil
-              veniam debitis aperiam quo earum
-              eius neque harum, laborum facere
-              nulla commodi ipsam perferendis
-              voluptatibus deleniti cum dolor
-              maiores incidunt ratione accusantium
-              porro obcaecati aliquam fugiat sed
-              nemo. Iusto odit placeat laboriosam
-              possimus similique deleniti ullam
-              impedit voluptate. Accusantium,
-              facilis assumenda!
+              Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Nihil veniam debitis aperiam
+              quo earum eius neque harum, laborum facere
+              nulla commodi ipsam perferendis voluptatibus
+              deleniti cum dolor maiores incidunt ratione
+              accusantium porro obcaecati aliquam fugiat sed
+              nemo. Iusto odit placeat laboriosam possimus
+              similique deleniti ullam impedit voluptate.
+              Accusantium, facilis assumenda!
             </p>
           </Col>
-          <Col className=" d-flex justify-content-center">
+          <Col
+            lg="6"
+            md="6"
+            sm="12"
+            xs="12"
+            className=" d-flex justify-content-center"
+          >
             <img
               src={cake_shop}
               alt="Catering shop"
@@ -54,7 +62,7 @@ const About = () => {
             />
           </Col>
         </Row>
-        <Row className="mb-5 align-items-center">
+        <Row className="about__chef-row mb-5 align-items-center">
           <Col className="d-flex justify-content-center">
             <img
               src={chef_image}
@@ -65,13 +73,11 @@ const About = () => {
           <Col>
             <h6>ABOUT THE CHEF</h6>
             <p>
-              Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit. Illo,
-              natus? Totam consequuntur tempore
-              sed minus et nihil, quae nam
-              provident pariatur corporis iusto
-              eaque sunt illo? Autem illo iusto
-              nostrum?
+              Lorem ipsum dolor sit amet, consectetur
+              adipisicing elit. Illo, natus? Totam
+              consequuntur tempore sed minus et nihil, quae
+              nam provident pariatur corporis iusto eaque
+              sunt illo? Autem illo iusto nostrum?
             </p>
           </Col>
         </Row>
@@ -79,15 +85,13 @@ const About = () => {
           <Col>
             <h6>PRODUCTS AND SERVICES</h6>
             <p>
-              Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Rem
-              in natus aspernatur, reiciendis
-              saepe eum esse repellendus.
+              Lorem ipsum dolor sit amet consectetur,
+              adipisicing elit. Rem in natus aspernatur,
+              reiciendis saepe eum esse repellendus.
               Accusamus omnis harum, praesentium,
-              repudiandae soluta recusandae cum
-              perspiciatis tempora deserunt
-              mollitia aspernatur incidunt velit?
-              Saepe, culpa. Ullam veniam quod
+              repudiandae soluta recusandae cum perspiciatis
+              tempora deserunt mollitia aspernatur incidunt
+              velit? Saepe, culpa. Ullam veniam quod
               voluptate provident quam!
             </p>
           </Col>
@@ -99,7 +103,7 @@ const About = () => {
             />
           </Col>
         </Row>
-        <Row className="mb-5 align-items-center">
+        <Row className="about__contact-row mb-5 align-items-center">
           <Col>
             <img
               src={contact_image}
@@ -110,17 +114,17 @@ const About = () => {
           <Col>
             <h6>CONTACT US</h6>
             <p>
-              You can contact neche catering
-              through email, phone or any of our
-              social media handles provided below.
+              You can contact neche catering through email,
+              phone or any of our social media handles
+              provided below.
             </p>
             <div className="contact__details-div">
               <span>
-                <i class="ri-mail-fill"></i>{" "}
+                <i className="ri-mail-fill"></i>{" "}
                 forstermichael112@gmail.com
               </span>
               <span>
-                <i class="ri-phone-fill"></i>{" "}
+                <i className="ri-phone-fill"></i>{" "}
                 +2348113778736
               </span>
               <div className="d-flex gap-4">
@@ -158,7 +162,7 @@ const About = () => {
                   placeholder="Enter your email"
                 />{" "}
                 <Button $primary width="55px">
-                  <i class="ri-send-plane-fill"></i>
+                  <i className="ri-send-plane-fill"></i>
                 </Button>
               </div>
             </div>

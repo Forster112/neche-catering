@@ -1,0 +1,31 @@
+.inbox__container .row{
+  background: #fdfdff;
+  width: 98%;
+  border: 1px solid #c6c8cc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.inbox__time{
+  color: #c6c8cc;
+  font-size: .8rem;
+  line-height: 20px;
+}
+
+.inbox__status{
+  font-size: 1rem;
+  line-height: 20px;
+}
+
+.inbox__desc{
+  font-size: 0.9rem;
+  line-height: 20px;
+  color: #789DC9;
+}
+
+.inbox__about{
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #c6c8cc;
+  border-radius: 0px 0px 5px 5px;
+}
