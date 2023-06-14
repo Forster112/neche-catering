@@ -19,6 +19,7 @@ const FormComp = (props) => {
             <form
               action=""
               className="login__form d-flex flex-column gap-4 align-items-center justify-content-center"
+              noValidate
             >
               {props.children}
             </form>

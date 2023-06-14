@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-import {
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+
+import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/users/usersSlice";
@@ -13,6 +13,11 @@ import FormComp from "../components/FormComp/FormComp";
 import { Button } from "../components/StyledComponents/StyledComponents";
 
 const Register = () => {
+  const registerForm = useForm();
+  const { register, control, handleSubmit, formState } =
+    registerForm;
+  const { errors } = formState;
+
   const userDetailObj = {
     firstname: "",
     lastname: "",
@@ -21,17 +26,20 @@ const Register = () => {
     password: "",
   };
 
-  const [userDetails, setUserDetails] = useState(
-    userDetailObj
-  );
+  const [userDetails, setUserDetails] =
+    useState(userDetailObj);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  function registerUser(e) {
-    e.preventDefault();
-    dispatch(userActions.addUser(userDetails));
+  function registerUser(data) {
+    dispatch(
+      userActions.addUser({
+        ...data,
+        dateJoined: new Date(),
+      })
+    );
     setTimeout(() => {
       navigate("/home");
     }, 1000);
@@ -42,62 +50,93 @@ const Register = () => {
       <FormComp type="Register">
         <input
           type="text"
+          id="firstname"
           placeholder="First Name"
-          onChange={(e) =>
-            setUserDetails({
-              ...userDetails,
-              firstname: e.target.value,
-            })
-          }
+          {...register("firstname", {
+            required: {
+              value: true,
+              message: "Your first name is required",
+            },
+          })}
         />
+        <p className="input__error-message">
+          {errors.firstname?.message}
+        </p>
         <input
           type="text"
+          id="lastname"
           placeholder="Last Name"
-          onChange={(e) =>
-            setUserDetails({
-              ...userDetails,
-              lastname: e.target.value,
-            })
-          }
+          {...register("lastname", {
+            required: {
+              value: true,
+              message: "Your last name is required",
+            },
+          })}
         />
+        <p className="input__error-message">
+          {errors.lastname?.message}
+        </p>
         <input
           type="email"
+          id="email"
           placeholder="Email"
-          onChange={(e) =>
-            setUserDetails({
-              ...userDetails,
-              email: e.target.value,
-            })
-          }
+          {...register("email", {
+            required: {
+              value: true,
+              message: "Your email address is required",
+            },
+            pattern: {
+              value:
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              message: "Invalid Email Address",
+            },
+          })}
         />
+        <p className="input__error-message">
+          {errors.email?.message}
+        </p>
         <input
           type="tel"
+          id="phone"
           placeholder="Phone Number"
-          onChange={(e) =>
-            setUserDetails({
-              ...userDetails,
-              phone: e.target.value,
-            })
-          }
+          {...register("phone", {
+            required: {
+              value: true,
+              message: "Your phone number is required",
+            },
+          })}
         />
+        <p className="input__error-message">
+          {errors.phone?.message}
+        </p>
         <input
           type="password"
+          id="password"
           placeholder="Password"
-          className="mb-3"
-          onChange={(e) =>
-            setUserDetails({
-              ...userDetails,
-              password: e.target.value,
-            })
-          }
+          className=""
+          {...register("password", {
+            required: {
+              value: true,
+              message: "Please input a strong password",
+            },
+            pattern: {
+              value: /^[A-Z](?=.*[0-9])[a-zA-Z0-9]{5,}$/,
+              message:
+                "Your password must be six characters long, begins with an uppercase letter and must contain a number",
+            },
+          })}
         />
+        <p className="input__error-message mb-3">
+          {errors.password?.message}
+        </p>
         <Button
           $primary
-          onClick={(e) => registerUser(e)}
+          onClick={handleSubmit(registerUser)}
         >
           Register
         </Button>
       </FormComp>
+      <DevTool control={control} />
       <p className="account__mov text-center mb-5">
         Already have an account?{" "}
         <Link to="/login">

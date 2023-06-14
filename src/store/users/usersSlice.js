@@ -34,10 +34,9 @@ const userSlice = createSlice({
 
     deleteUser(state, action) {
       const useremail = action.payload;
-      const existingUser =
-        state.allUsers.findIndex(
-          (item) => item.email === useremail
-        );
+      const existingUser = state.allUsers.findIndex(
+        (item) => item.email === useremail
+      );
 
       if (existingUser) {
         state.allUsers.splice(existingUser, 1);
@@ -48,16 +47,8 @@ const userSlice = createSlice({
 
     loginUser(state, action) {
       const user = action.payload;
-      const existingUser = state.allUsers.find(
-        (item) =>
-          item.email === user.email &&
-          item.password === user.password
-      );
-
-      if (existingUser) {
-        state.isLoggedIn = true;
-        state.loggedInUser = existingUser;
-      }
+      state.isLoggedIn = true;
+      state.loggedInUser = user;
     },
 
     logoutUser(state, action) {
@@ -75,10 +66,8 @@ const userSlice = createSlice({
       const newUserData = action.payload;
       const user = state.allUsers.find(
         (item) =>
-          item.email ===
-            state.loggedInUser.email &&
-          item.password ===
-            state.loggedInUser.password
+          item.email === state.loggedInUser.email &&
+          item.password === state.loggedInUser.password
       );
 
       if (user) {
@@ -96,14 +85,12 @@ const userSlice = createSlice({
       const newUserPassword = action.payload;
       const user = state.allUsers.find(
         (item) =>
-          item.email ===
-            state.loggedInUser.email &&
-          item.password ===
-            state.loggedInUser.password
+          item.email === state.loggedInUser.email &&
+          item.password === state.loggedInUser.password
       );
 
       if (user) {
-        user.password = newUserPassword
+        user.password = newUserPassword;
         state.loggedInUser = user;
         state.isLoggedIn = true;
       }
