@@ -1,6 +1,7 @@
 .profile__selectBar {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
   height: 85vh;
   padding: 0 0 20px 0;

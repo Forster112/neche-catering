@@ -27,6 +27,13 @@ const DeskTopProfile = () => {
     (state) => state.userSlice.loggedInUser
   );
 
+  const purchasedItems = useSelector(
+    (state) => state.cart.purchasedItems
+  );
+
+  const usersOrders = purchasedItems.filter(item => item?.user === loggedUserDetails?.email);
+  console.log(usersOrders);
+
   const navigate = useNavigate();
 
   function logout(e) {
@@ -112,14 +119,15 @@ const DeskTopProfile = () => {
               return (
                 <ProfileHelmet title="Orders">
                   <div className="orders__wrapper">
-                    {fakeOrders.map((item, i) => (
+                    {usersOrders.map((item, i) => (
                       <Orders
-                        name={item.name}
-                        quantity={item.quantity}
-                        price={item.price}
+                        name={item.desert[0].title}
+                        quantity={item.desert[0].quantity}
+                        price={item.totalAmount}
                         status={item.status}
                         date={item.date}
                         key={i}
+                        fullOrders={item}
                       />
                     ))}
                   </div>

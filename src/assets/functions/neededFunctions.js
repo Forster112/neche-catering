@@ -38,3 +38,23 @@ export function sizeToRender() {
   )
     return true;
 }
+
+export function formatDate(newdate) {
+  const date = new Date(newdate);
+
+  const getday = date.getDate();
+  const getmonth = date.getMonth() + 1;
+  const getyear = date.getFullYear();
+
+  const day = getday < 10 ? `0${getday}` : getday;
+  const month = getmonth < 10 ? `0${getmonth}` : getmonth;
+  const year = getyear;
+
+  return `${day}/${month}/${year}`;
+}
+
+export function stats(status) {
+  if (status === "Delivered") return "$green";
+  if (status === "On transit") return "$yellow";
+  if (status === "Cancelled") return "$red";
+}

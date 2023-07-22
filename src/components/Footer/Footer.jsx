@@ -13,7 +13,7 @@ import { IconWrap } from "../StyledComponents/StyledComponents";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <Row className="footer__row">
         <Col lg="3" md="6" sm="6" xs="6">
           <div className="footer_info text-start">

@@ -1,30 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+
+import OrderDetails from "./OrderDetails";
+
+import { stats } from "../../assets/functions/neededFunctions";
 
 import { DeliveryStatus } from "../StyledComponents/StyledComponents";
 import "../../styles/orders.css";
+
 const Orders = (props) => {
-  function stats(status) {
-    if (status === "Delivered") return "$green"
-    if (status === "On transit") return "$yellow"
-    if (status === "Cancelled") return "$red"
+  const [showDetails, setShowDetails] = useState(false);
+
+  function details() {
+    setShowDetails(!showDetails);
   }
+
   return (
     <>
-      <div className="orders__wrap">
-        <p>{props.name}</p>
-        <p>
-          Quantity: <span>{props.quantity}</span>
-        </p>
-        <p>
-          Price: <span>₦{props.price}</span>
-        </p>
-        <p>
-          Status: <DeliveryStatus stats={stats(props.status)}>{props.status}</DeliveryStatus>
-        </p>
-        <p>
-          On: <span>{props.date}</span>
-        </p>
+      <div className="orders__wrap" data-testid="orders">
+        <div className="d-flex justify-content-between">
+          <span className="order__date">{props.date}</span>
+          <span>
+            <DeliveryStatus stats={stats(props.status)}>
+              {props.status}
+            </DeliveryStatus>
+          </span>
+        </div>
+        <div className="d-flex justify-content-between">
+          <span>
+            {props.quantity} {props.name}{" "}
+            <span
+              className="orders__more-details"
+              onClick={details}
+            >
+              ...more details
+            </span>
+          </span>
+          <span>₦{props.price}</span>
+        </div>
       </div>
+      {showDetails && (
+        <OrderDetails
+          onclick={details}
+          fullOrders={props.fullOrders}
+        />
+      )}
     </>
   );
 };

@@ -48,7 +48,7 @@ const AllFoods = () => {
                 )
               }
               className={
-                activeType === "CAKES" ? "active__kind" : ""
+                activeType === "CAKES" ? "active__kin" : ""
               }
             >
               Cakes
@@ -129,7 +129,7 @@ const AllFoods = () => {
           <Row className="mb-5">
             {activeDesert(activeType).map((item, i) => (
               <Col lg="3" md="6" sm="12" key={i}>
-                <ProductCard>
+                <ProductCard height="350px">
                   <img
                     src={item.image}
                     alt="product"

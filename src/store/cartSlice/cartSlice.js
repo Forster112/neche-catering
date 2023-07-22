@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
+import { formatDate } from "../../assets/functions/neededFunctions";
 
 const initialState = {
   cartItems: [],
+  purchasedItems: [],
   totalAmount: 0,
   totalQuantity: 0,
 };
@@ -42,8 +44,7 @@ const cartSlice = createSlice({
       state.totalAmount = state.cartItems.reduce(
         (total, item) =>
           total +
-          Number(item.price) *
-            Number(item.quantity),
+          Number(item.price) * Number(item.quantity),
         0
       );
     },
@@ -69,8 +70,7 @@ const cartSlice = createSlice({
       state.totalAmount = state.cartItems.reduce(
         (total, item) =>
           total +
-          Number(item.price) *
-            Number(item.quantity),
+          Number(item.price) * Number(item.quantity),
         0
       );
     },
@@ -95,10 +95,22 @@ const cartSlice = createSlice({
       state.totalAmount = state.cartItems.reduce(
         (total, item) =>
           total +
-          Number(item.price) *
-            Number(item.quantity),
+          Number(item.price) * Number(item.quantity),
         0
       );
+    },
+    purchaseItem(state, action) {
+      const newPurchase = action.payload;
+
+      const purchaseDate = new Date();
+      const strDate = purchaseDate.toString()
+      state.purchasedItems.push({
+        ...newPurchase,
+        desert: state.cartItems,
+        totalAmount: state.totalAmount,
+        totalQuantity: state.totalQuantity,
+        date: formatDate(strDate),
+      });
     },
   },
 });

@@ -1,0 +1,52 @@
+.order-details__wrap{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15%;
+  transform: translateX(12%);
+  background-color: #84b4df;
+  color: #33548A;
+  width: 80%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px #52728f85;
+  z-index: 99;
+  animation: bounceOut 1s ease-in-out 0s 1 normal;
+}
+
+.close_btn{
+  font-weight: 600;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.order-lists_holder{
+  background-color: #ADD0EF;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-radius: 5px;
+  height: 130px;
+  color: #1a2f50;
+
+  overflow-y: auto;
+}
+
+.order-details__form-info{
+  font-size: 0.9rem;
+}
+
+.delivery-status__tag{
+  margin-top: -10px;
+}
+
+@keyframes bounceOut {
+  0%, 100%{
+    transform: scale(1);
+    margin-left: 9.6%;
+  }
+  50%{
+    transform: scale(1.1);
+    margin-left: 9.6%;
+  }
+}

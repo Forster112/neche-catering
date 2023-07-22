@@ -84,6 +84,7 @@ export const ProductCard = styled.div`
   justify-content: center;
   font-family: "Istok Web", sans-serif;
   gap: ${(props) => props.gap || "5px"};
+  height: ${(props)=> props.height};
   padding: ${(props) => props.padding || "20px"};
   border: 2px solid #add0ef;
   background: #eaedf3;
@@ -94,9 +95,11 @@ export const DeliveryStatus = styled.span`
   background: ${(props) => {
     if (props.stats === "$green") return "#06952c";
     if (props.stats === "$red") return "red";
-    if (props.stats === "$yellow") return "yellow";
+    if (props.stats === "$yellow") return "#c0b40a";
   }};
   color: #000000;
-  padding: 3px;
-  border-radius: 5px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  cursor: default;
 `;

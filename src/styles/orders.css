@@ -1,9 +1,14 @@
 .orders__wrap{
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
   border: 1px solid #ADD0EF;
-  color: #33548a;
+  background: #ADD0EF;
+  color:#33548A;
   margin: 20px;
   border-radius: 5px;
+  font-weight: 600;
 }
 
 .orders__wrap p{
@@ -11,6 +16,17 @@
   line-height: 25px;
 }
 
-.orders__wrap p span{
-  margin-left: 25px;
+.orders__more-details{
+  color: #e78932;
+  cursor: pointer;
+}
+
+.orders__more-details:hover{
+  color: #d66d0b;
+}
+
+.order__date{
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 500;
 }
