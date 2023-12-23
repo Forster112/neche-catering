@@ -1,15 +1,23 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../store/users/usersSlice";
 
+import {
+  auth,
+  query,
+  where,
+  getDocs,
+  collection,
+  db,
+} from "../../firebase";
+
 import { Container, Row, Col } from "reactstrap";
 
 import ProfileHelmet from "../../components/ProfileComp/ProfileHelmet";
-import fakeOrders from "../../assets/fakeData/fake_order";
 import Orders from "../../components/ProfileComp/Orders";
 import UserDetails from "../../components/ProfileComp/UserDetails";
 import Newsletter from "../../components/ProfileComp/Newsletter";
@@ -27,24 +35,55 @@ const DeskTopProfile = () => {
     (state) => state.userSlice.loggedInUser
   );
 
-  const purchasedItems = useSelector(
-    (state) => state.cart.purchasedItems
-  );
-
-  const usersOrders = purchasedItems.filter(item => item?.user === loggedUserDetails?.email);
-  console.log(usersOrders);
 
   const navigate = useNavigate();
 
-  function logout(e) {
+  async function logout(e) {
     e.preventDefault();
-    dispatch(
-      userActions.logoutUser(loggedUserDetails.email)
-    );
+    await auth.signOut();
+    dispatch(userActions.logoutUser(loggedUserDetails.uid));
     setTimeout(() => {
-      navigate("/home");
+      navigate("/");
     }, 100);
   }
+
+  // query the user orders
+  const queryOrders = async () => {
+    try {
+      const q = query(
+        collection(db, "orders"),
+        where("uid", "==", loggedUserDetails.uid)
+      );
+      const querySnapShot = await getDocs(q);
+
+      const orders = [];
+
+      querySnapShot.forEach((doc) => {
+        orders.push(doc.data());
+      });
+      return orders;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const [userOrders, setUserOrders] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const orders = await queryOrders();
+        setUserOrders(orders);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(userOrders);
 
   return (
     <Container className="mb-4 mt-3">
@@ -119,12 +158,12 @@ const DeskTopProfile = () => {
               return (
                 <ProfileHelmet title="Orders">
                   <div className="orders__wrapper">
-                    {usersOrders.map((item, i) => (
+                    {userOrders.map((item, i) => (
                       <Orders
                         name={item.desert[0].title}
                         quantity={item.desert[0].quantity}
                         price={item.totalAmount}
-                        status={item.status}
+                        status={item.purchaserDetails.status}
                         date={item.date}
                         key={i}
                         fullOrders={item}

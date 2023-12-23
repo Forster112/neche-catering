@@ -40,7 +40,7 @@ export function sizeToRender() {
 }
 
 export function formatDate(newdate) {
-  const date = new Date(newdate);
+  const date = new Date(newdate * 1000);
 
   const getday = date.getDate();
   const getmonth = date.getMonth() + 1;

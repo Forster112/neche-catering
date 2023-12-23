@@ -1,8 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../store/users/usersSlice";
+
+import { auth, signInWithEmailAndPassword } from "../firebase";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -10,33 +12,55 @@ import FormComp from "../components/FormComp/FormComp";
 import { Button } from "../components/StyledComponents/StyledComponents";
 
 const Login = () => {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const detailsObj = { email: "", password: "" };
+  const detailsObj = { emailAd: "", password: "" };
   const [userDetails, setUserDetails] =
     useState(detailsObj);
 
-  const allUsers = useSelector(
-    (state) => state.userSlice.allUsers
-  );
-
-  function loginUser(e) {
+  async function loginUser(e) {
     e.preventDefault();
-    const existingUser = allUsers.find(
-      (user) =>
-        user.email === userDetails.email &&
-        user.password === userDetails.password
-    );
 
-    if (existingUser) {
-      dispatch(userActions.loginUser(existingUser));
+    try {
+
+      const {emailAd, password} = userDetails
+      const usercredential = await signInWithEmailAndPassword(auth, emailAd, password);
+      const user = usercredential.user
+      console.log(user);
+      const {
+        displayName,
+        email,
+        emailVerified,
+        uid,
+        metadata,
+      } = user;
+      const { creationTime } = metadata;
+      dispatch(
+        userActions.loginUser({
+          displayName,
+          email,
+          emailVerified,
+          uid,
+          creationTime,
+        })
+      );
       setError("");
       setTimeout(() => {
-        navigate("/home");
+        navigate("/");
       }, 1000);
-    } else {
+    } catch (error) {
+      console.log(error.message);
       setError("Invalid Email or Password");
     }
     console.log(error);
@@ -57,7 +81,7 @@ const Login = () => {
           onChange={(e) =>
             setUserDetails({
               ...userDetails,
-              email: e.target.value,
+              emailAd: e.target.value.toLowerCase(),
             })
           }
         />

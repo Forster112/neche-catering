@@ -7,6 +7,8 @@ import { stats } from "../../assets/functions/neededFunctions";
 import { DeliveryStatus } from "../StyledComponents/StyledComponents";
 import "../../styles/orders.css";
 
+import { formatDate } from "../../assets/functions/neededFunctions";
+
 const Orders = (props) => {
   const [showDetails, setShowDetails] = useState(false);
 
@@ -18,7 +20,7 @@ const Orders = (props) => {
     <>
       <div className="orders__wrap" data-testid="orders">
         <div className="d-flex justify-content-between">
-          <span className="order__date">{props.date}</span>
+          <span className="order__date">{formatDate(props.date.seconds)}</span>
           <span>
             <DeliveryStatus stats={stats(props.status)}>
               {props.status}

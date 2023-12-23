@@ -111,6 +111,9 @@ const cartSlice = createSlice({
         totalQuantity: state.totalQuantity,
         date: formatDate(strDate),
       });
+      state.cartItems = [];
+      state.totalAmount = 0;
+      state.totalQuantity = 0;
     },
   },
 });

@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  allUsers: [
-    {
-      firstname: "Forster",
-      lastname: "Udemezue",
-      email: "forstermichael112@gmail.com",
-      phone: "08113778736",
-      password: "1111",
-    },
-  ],
+  // allUsers: [
+  //   {
+  //     firstname: "Forster",
+  //     lastname: "Udemezue",
+  //     email: "forstermichael112@gmail.com",
+  //     phone: "08113778736",
+  //     password: "1111",
+  //   },
+  // ],
   loggedInUser: {},
   isLoggedIn: false,
 };
@@ -19,18 +19,18 @@ const userSlice = createSlice({
   initialState,
 
   reducers: {
-    addUser(state, action) {
-      const newUser = action.payload;
-      const existingUser = state.allUsers.find(
-        (item) => item.email === newUser.email
-      );
+    // addUser(state, action) {
+    //   const newUser = action.payload;
+    //   const existingUser = state.allUsers.find(
+    //     (item) => item.email === newUser.email
+    //   );
 
-      if (!existingUser) {
-        state.allUsers.push(newUser);
-        state.loggedInUser = newUser;
-        state.isLoggedIn = true;
-      }
-    },
+    //   if (!existingUser) {
+    //     state.allUsers.push(newUser);
+    //     state.loggedInUser = newUser;
+    //     state.isLoggedIn = true;
+    //   }
+    // },
 
     deleteUser(state, action) {
       const useremail = action.payload;
@@ -52,9 +52,9 @@ const userSlice = createSlice({
     },
 
     logoutUser(state, action) {
-      const userEmail = action.payload;
+      const userID = action.payload;
       const loggedInUser =
-        state.loggedInUser.email === userEmail;
+        state.loggedInUser.uid === userID;
 
       if (loggedInUser) {
         state.isLoggedIn = false;

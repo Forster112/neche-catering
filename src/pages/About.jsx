@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, Row, Col } from "reactstrap";
 // import { Button } from "react-router-dom";
 
@@ -14,6 +14,15 @@ import services_image from "../assets/images/services-image.png";
 import contact_image from "../assets/images/contact-image.png";
 
 const About = () => {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <div>
       <div className="about__intro">

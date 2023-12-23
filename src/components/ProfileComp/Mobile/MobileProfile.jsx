@@ -18,13 +18,12 @@ const MobileProfile = () => {
     (state) => state.userSlice.loggedInUser
   );
 
-  function logout(e) {
+  async function logout(e) {
     e.preventDefault();
-    dispatch(
-      userActions.logoutUser(loggedUserDetails.email)
-    );
+    await auth.signOut();
+    dispatch(userActions.logoutUser(loggedUserDetails.uid));
     setTimeout(() => {
-      navigate("/home");
+      navigate("/");
     }, 100);
   }
 

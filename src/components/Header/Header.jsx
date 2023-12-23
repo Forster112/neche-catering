@@ -34,7 +34,7 @@ const Header = () => {
   const nav_links = [
     {
       display: "Home",
-      path: "/home",
+      path: "/",
     },
     {
       display: "Foods",
@@ -70,7 +70,7 @@ const Header = () => {
     <header ref={headerRef} className="header">
       <div className="nav d-flex align-items-center justify-content-between">
         <div className="logo d-flex align-items-center flex-column gap-4">
-          <Link to="/home">
+          <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
           <h5>neche catering</h5>

@@ -9,6 +9,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userActions } from "../store/users/usersSlice";
 
+import {
+  db,
+  addDoc,
+  auth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  collection,
+} from "../firebase";
+
 import FormComp from "../components/FormComp/FormComp";
 import { Button } from "../components/StyledComponents/StyledComponents";
 
@@ -26,22 +35,47 @@ const Register = () => {
     password: "",
   };
 
-  const [userDetails, setUserDetails] =
-    useState(userDetailObj);
-
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  function registerUser(data) {
-    dispatch(
-      userActions.addUser({
-        ...data,
-        dateJoined: new Date(),
-      })
-    );
+  async function registerUser(data) {
+
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const newUser = auth.currentUser;
+      await updateProfile(auth.currentUser, {
+        displayName: `${data.firstname} ${data.lastname}`,
+      });
+
+      await addDoc(collection(db, "phoneNumbers"), {
+        uid: newUser.uid,
+        phone: data.phone
+      });
+      // if (!auth.currentUser.emailVerified) {
+      //   await auth.currentUser.sendEmailVerification();
+      // }
+      const {
+        displayName,
+        email,
+        emailVerified,
+        uid,
+        metadata,
+      } = newUser;
+      const {creationTime} = metadata
+      dispatch(userActions.loginUser({displayName, email, emailVerified, uid, creationTime }));
+      console.log(newUser);
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    console.log(data.phone);
     setTimeout(() => {
-      navigate("/home");
+      navigate("/");
     }, 1000);
   }
 
@@ -120,7 +154,8 @@ const Register = () => {
               message: "Please input a strong password",
             },
             pattern: {
-              value: /^[A-Z](?=.*[0-9])[a-zA-Z0-9]{5,}$/,
+              value:
+                /^[A-Z](?=.*[!@#$%^&*()-_=+;:'",.?`~A-Za-z0-9]){5,}$/,
               message:
                 "Your password must be six characters long, begins with an uppercase letter and must contain a number",
             },

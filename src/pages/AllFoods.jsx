@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
 import { Row, Col } from "reactstrap";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,10 @@ import { activeDesert } from "../assets/functions/neededFunctions";
 import CupcakesForm from "../components/FoodsComp/CupcakesForm";
 
 const AllFoods = () => {
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: "smooth"})
+  }, [])
   
   const dispatch = useDispatch();
   const activeType = useSelector(
@@ -48,7 +52,7 @@ const AllFoods = () => {
                 )
               }
               className={
-                activeType === "CAKES" ? "active__kin" : ""
+                activeType === "CAKES" ? "active__kind" : ""
               }
             >
               Cakes

@@ -69,7 +69,7 @@ const Home = () => {
                   <Button
                     onClick={(e) =>
                       (window.location.href =
-                        "/home#gallery")
+                        "#gallery")
                     }
                   >
                     View gallery

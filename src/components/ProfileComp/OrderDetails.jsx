@@ -7,21 +7,16 @@ import { stats } from "../../assets/functions/neededFunctions";
 
 import { DeliveryStatus } from "../StyledComponents/StyledComponents";
 
+import { formatDate } from "../../assets/functions/neededFunctions";
+
 const OrderDetails = ({ onclick, fullOrders }) => {
   console.log(fullOrders);
 
   const {
-    orderId,
-    deliveryMethod,
-    name,
-    email,
-    phone,
-    address,
-    state,
-    country,
-    status,
+    purchaserDetails,
     desert,
     totalAmount,
+    totalQuantity,
     date,
   } = fullOrders;
 
@@ -43,7 +38,7 @@ const OrderDetails = ({ onclick, fullOrders }) => {
   return (
     <div className="order-details__wrap gap-4">
       <div className="d-flex align-items-center justify-content-between ">
-        <p className="m-0 fst-italic">{date}</p>
+        <p className="m-0 fst-italic">{formatDate(date.seconds)}</p>
         <i
           className="ri-close-line close_btn"
           onClick={onclick}
@@ -71,47 +66,48 @@ const OrderDetails = ({ onclick, fullOrders }) => {
           <Col sm="4" md="4" lg="4">
             Order ID:{" "}
           </Col>
-          <Col>{orderId}</Col>
+          <Col>{purchaserDetails.orderId}</Col>
         </Row>
         <Row className=" border-bottom border-dark border-opacity-10  ">
           <Col sm="4" md="4" lg="4">
             Name:{" "}
           </Col>
-          <Col>{name}</Col>
+          <Col>{purchaserDetails.name}</Col>
         </Row>
         <Row className=" border-bottom border-dark border-opacity-10  ">
           <Col sm="4" md="4" lg="4">
             Email:{" "}
           </Col>
-          <Col>{email}</Col>
+          <Col>{purchaserDetails.email}</Col>
         </Row>
         <Row className=" border-bottom border-dark border-opacity-10  ">
           <Col sm="4" md="4" lg="4">
             Phone:{" "}
           </Col>
-          <Col>{phone}</Col>
+          <Col>{purchaserDetails.phone}</Col>
         </Row>
         <Row className=" border-bottom border-dark border-opacity-10  ">
           <Col sm="4" md="4" lg="4">
             Delivery Method:{" "}
           </Col>
-          <Col>{deliveryMethod}</Col>
+          <Col>{purchaserDetails.deliveryMethod}</Col>
         </Row>
         <Row>
           <Col sm="4" md="4" lg="4">
             Address:{" "}
           </Col>
           <Col>
-            {address} {state}, {country}
+            {purchaserDetails.address},{" "}
+            {purchaserDetails.state}
           </Col>
         </Row>
       </div>
       <div className="w-100 d-flex justify-content-center ">
         <DeliveryStatus
-          stats={stats(status)}
+          stats={stats(purchaserDetails.status)}
           className="delivery-status__tag"
         >
-          {status}
+          {purchaserDetails.status}
         </DeliveryStatus>
       </div>
     </div>

@@ -21,8 +21,7 @@ import MobileUserDetails from "../pages/mobile/MobileUserDetails";
 const Routers = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/foods" element={<AllFoods />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/contact" element={<Contact />} />

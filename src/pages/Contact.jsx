@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import { Container, Row } from "reactstrap";
 
@@ -6,6 +6,15 @@ import { Button } from "../components/StyledComponents/StyledComponents";
 import "../styles/contact.css";
 
 const Contact = () => {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <Container>
       <Row>

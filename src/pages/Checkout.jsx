@@ -15,6 +15,8 @@ import {
 } from "../components/StyledComponents/StyledComponents";
 import "../styles/checkout.css";
 
+import {db, collection, addDoc} from '../firebase'
+
 const Checkout = () => {
   const unique_id = uuid()
   const orderId = unique_id.slice(0, 12)
@@ -61,15 +63,46 @@ const Checkout = () => {
     (state) => state.cart.totalAmount
   );
 
-  // const orderedProducts = useSelector(
-  //   (state) => state.cart.cartItems
-  // );
-
   const loggedInUser = useSelector(
     (state) => state.userSlice.loggedInUser
   );
 
-  function purchaseItem() {
+  const desert = useSelector((state)=>state.cart.cartItems)
+  const totalAmount = useSelector((state)=>state.cart.totalAmount)
+  const totalQuantity = useSelector((state)=>state.cart.totalQuantity)
+
+  async function purchaseItem() {
+
+    const purchaserDetails = {
+      user: loggedInUser.email,
+      orderId,
+      deliveryMethod,
+      paymentMethod,
+      name: name.current?.value,
+      email: email.current?.value,
+      phone: phone.current?.value,
+      address: address.current?.value,
+      state: state.current?.value,
+      status: "On transit",
+    };
+
+    try {
+      const docRef = await addDoc(
+        collection(db, "orders"),
+        {
+          uid: loggedInUser.uid,
+          desert,
+          totalAmount,
+          totalQuantity,
+          purchaserDetails,
+          date: new Date(),
+        }
+      );
+      console.log("Purchase with ID: ", docRef.id);
+    } catch (error) {
+      console.log(error.message);
+    }
+
     dispatch(
       cartActions.purchaseItem({
         user: loggedInUser.email,
@@ -81,7 +114,6 @@ const Checkout = () => {
         phone: phone.current?.value,
         address: address.current?.value,
         state: state.current?.value,
-        country: country.current?.value,
         status: "On transit",
       })
     );
@@ -156,12 +188,6 @@ const Checkout = () => {
                 type="text"
                 placeholder="State"
                 ref={state}
-                disabled={isDisabled}
-              />
-              <input
-                type="text"
-                placeholder="Country"
-                ref={country}
                 disabled={isDisabled}
               />
               <div className="d-flex flex-column mt-3">
